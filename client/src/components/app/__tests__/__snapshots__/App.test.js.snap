@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "accent": "rgb(173, 38, 36)",
+      "darksecondary": "rgb(107, 48, 13)",
+      "primary": "rgb(0, 153, 0)",
+      "secondary": "rgb(204, 255, 255)",
+    }
+  }
+>
+  <BrowserRouter>
+    <HelmetWrapper
+      defer={true}
+      encodeSpecialCharacters={true}
+    >
+      <title>
+        Redux Blogging
+      </title>
+      <link
+        href="/src/assets/favicon.ico"
+        rel="icon"
+      />
+    </HelmetWrapper>
+    <GlobalStyleComponent />
+    <Header />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/about/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/home/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/posts/search"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/posts/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/users/new"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/users"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/users/:id"
+      />
+      <Redirect
+        push={false}
+        to="/home/"
+      />
+    </Switch>
+    <Footer />
+  </BrowserRouter>
+</ThemeProvider>
+`;

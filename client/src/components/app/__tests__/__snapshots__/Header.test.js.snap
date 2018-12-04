@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders 1`] = `
+<styled.header>
+  <h1>
+    Redux Blogging
+  </h1>
+  <styled.nav>
+    <Input
+      key="About"
+      label="About"
+      path="/about"
+    />
+    <Input
+      key="Home"
+      label="Home"
+      path="/home"
+    />
+    <Input
+      key="Posts"
+      label="Posts"
+      path="/posts/search"
+    />
+    <Input
+      key="Users"
+      label="Users"
+      path="/users"
+    />
+    <Input
+      key="Register"
+      label="Register"
+      path="/users/new"
+    />
+  </styled.nav>
+</styled.header>
+`;
