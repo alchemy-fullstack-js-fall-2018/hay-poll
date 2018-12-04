@@ -71,4 +71,31 @@ describe('polls', () => {
         expect(polls).toContainEqual(poll2Created);
       });
   });
+
+  it('gets a poll by id', () => {
+    return request(app)
+      .get(`/api/polls/${createdPolls[0]._id}`)
+      .then(res => {
+        expect(res.body).toEqual({ ...createdPolls[0], __v: expect.any(Number) });
+      });
+  });
+
+  it('posts the votes for a poll', () => {
+    const vote = {
+      pollId: createdPolls[0]._id,
+      votes: createdPolls[0].options[chance.natural({ min: 0, max: 2 })]._id
+    };
+
+    return request(app)
+      .post(`/api/polls/${createdPolls[0]._id}/votes`)
+      .send(vote)
+      .then(res => {
+        console.log('did you make it to the test', res.body);
+        expect(res.body).toEqual({
+          ...vote,
+          _id: expect.any(String),
+          __v: expect.any(Number)
+        });
+      });
+  });
 });
