@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import Poll from '../../models/Poll';
+import Vote from '../../models/Vote';
 
 export default Router()
   .post('/polls', (req, res, next) => {
@@ -21,5 +22,12 @@ export default Router()
     Poll.find()
       .lean()
       .then(polls => res.json(polls))
+      .catch(next);
+  })
+
+  .post('/polls/:id/votes', (req, res, next) => {
+    const { poll, selection } = req.body;
+    Vote.create({ poll, selection })
+      .then(vote => res.json(vote))
       .catch(next);
   });

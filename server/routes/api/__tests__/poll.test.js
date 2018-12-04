@@ -69,4 +69,32 @@ describe('polls route', () => {
         expect(res.body).toEqual(createdPoll)
     });
   });
+
+  test('post to /api/polls/:id/votes', async () => {
+
+    const poll = mockPoll();
+    let createdPoll;
+
+    await request(app)
+      .post('/api/polls')
+      .send(poll)
+      .then(({ body }) => createdPoll = body);
+
+    const vote = {
+      poll: createdPoll._id,
+      selection: createdPoll.choices[chance.natural({ min: 0, max: 3})]._id
+    }
+
+    await request(app)
+      .post(`/api/polls/${createdPoll._id}/votes`)
+      .send(vote)
+      .then(res => {
+        checkStatus(200)(res);
+        expect(res.body).toEqual({
+          ...vote,
+          _id: expect.any(String),
+          __v: expect.any(Number)
+        })
+    });
+  });
 });
