@@ -10,6 +10,9 @@ export default Router()
   })
 
   .get('/polls', (req, res, next) => {
-
+    Poll.find()
+      .lean()
+      .then(poll => res.json(poll))
+      .catch(next);
 
   });

@@ -39,24 +39,17 @@ describe('polls route', () => {
       .get('/api/polls')
       .then(res => {
         checkStatus(200)(res);
-        polls.forEach(poll => {
-          return expect(res.body).toEqual({
+        return polls.forEach(poll => {
+          return expect(res.body).toContainEqual({
             ...poll,
             _id: expect.any(String),
             __v: expect.any(Number),
             choices: poll.choices.map(choice => {
-              ({ ...choice, _id: expect.any(String) })
+              return { ...choice, _id: expect.any(String) };
             })
-
           });
-
         });
-
-      })
-
-
-
-
+      });
   });
 
 });
