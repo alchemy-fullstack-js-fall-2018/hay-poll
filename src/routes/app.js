@@ -11,6 +11,6 @@ app.use(express.json());
 
 app.use('/api', apiRoutes);
 
-app.use('*', spa('/client/dist/index.html'));
+// app.use('*', spa('/client/dist/index.html'));
 
 export default app;

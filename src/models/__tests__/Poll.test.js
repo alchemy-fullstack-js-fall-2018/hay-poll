@@ -14,9 +14,8 @@ describe('poll model', () => {
     const poll = new Poll(data);
     const jsonPoll = poll.toJSON();
     expect(jsonPoll).toEqual({
+      ...data,
       _id: expect.any(Object),
-      title: data.title,
-      description: data.description,
       choices: data.choices.map(choice => ({ ...choice, _id: expect.any(Object) }))
     });
   });

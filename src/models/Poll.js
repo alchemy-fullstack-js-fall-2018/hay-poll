@@ -11,9 +11,7 @@ const pollSchema = new Schema({
   },
   choices: {
     type: [{ description: String }],
-    validate: function(v) {
-      return v.length !== 0;
-    }
+    validate: (choices) => choices.length !== 0
   }
 });
 
