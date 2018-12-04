@@ -4,7 +4,7 @@ import { dropCollection } from '../../../utils/db';
 import request from 'supertest';
 import app from '../../app';
 const chance = require('chance').Chance();
-
+import { mockPoll, mockPolls, postPoll } from '../../../utils/fixtures/poll';
 
 
 describe('polls route', () => {
@@ -14,24 +14,49 @@ describe('polls route', () => {
 
   test('post to /api/polls', async () => {
 
-    const data = {
-      title: chance.string({ length: 10 }),
-      description: chance.string({ length: 30 }),
-      choices: Array.apply(null, { length: 4 })
-        .map(() => ({ description: chance.string({ length: 15 }) }))
-    };
+    const poll = mockPoll();
 
     await request(app)
       .post('/api/polls')
-      .send(data)
+      .send(poll)
       .then(res => {
         checkStatus(200)(res);
         expect(res.body).toEqual({
-          ...data,
+          ...poll,
           _id: expect.any(String),
           __v: expect.any(Number),
-          choices: data.choices.map(choice => ({ ...choice, _id: expect.any(String) }))        })
+          choices: poll.choices.map(choice => ({ ...choice, _id: expect.any(String) }))
+        })
       });
+  });
+
+  test('get to /api/polls', async () => {
+
+    const polls = mockPolls(10);
+    polls.forEach(poll => postPoll(poll));
+
+    await request(app)
+      .get('/api/polls')
+      .then(res => {
+        checkStatus(200)(res);
+        polls.forEach(poll => {
+          return expect(res.body).toEqual({
+            ...poll,
+            _id: expect.any(String),
+            __v: expect.any(Number),
+            choices: poll.choices.map(choice => {
+              ({ ...choice, _id: expect.any(String) })
+            })
+
+          });
+
+        });
+
+      })
+
+
+
+
   });
 
 });
