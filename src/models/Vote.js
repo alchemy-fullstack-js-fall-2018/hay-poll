@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const voteSchema = new mongoose.Schema({
+const voteSchema = new Schema({
   pollId: {
     type: Schema.Types.ObjectId, ref: 'Poll'
   },
@@ -14,4 +14,4 @@ const voteSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Vote', voteSchema)
+export default model('Vote', voteSchema)

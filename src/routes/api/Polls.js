@@ -3,7 +3,7 @@ import Poll from '../../models/Poll';
 import Vote from '../../models/Vote';
 
 export default Router()
-  .post('/polls', (req, res, next) => {
+  .post('/', (req, res, next) => {
     const { title, candidates } = req.body;
 
     Poll.create({ title, candidates })
@@ -11,16 +11,15 @@ export default Router()
       .catch(next);
   })
 
-  .get('/polls', (req, res, next) => {
+  .get('/', (req, res, next) => {
     Poll
       .find()
-      .select({ __v: false })
       .lean()
       .then(polls => res.json(polls))
       .catch(next);
   })
 
-  .get('/polls/:id', (req, res, next) => {
+  .get('/:id', (req, res, next) => {
     const { id } = req.params;
 
     Poll.findById(id)
@@ -29,7 +28,7 @@ export default Router()
       .catch(next);
   })
 
-  .post('/polls/:id/votes', (req, res, next) => {
+  .post('/:id/votes', (req, res, next) => {
 
     const { id } = req.params.id;
     const votes = req.body;
@@ -49,7 +48,7 @@ export default Router()
         .catch(next);
   })
 
-  .get('/polls/:id/results', (req, res) => {
+  .get('/:id/results', (req, res) => {
     const { id } = req.params;
 
     Poll.findById(id)
