@@ -48,10 +48,11 @@ export default Router()
         .catch(next);
   })
 
-  .get('/:id/results', (req, res) => {
+  .get('/:id/results', (req, res, next) => {
     const { id } = req.params;
 
     Poll.findById(id)
       .then(poll => poll.results())
-      .then(results => res.json(results));
+      .then(results => res.json(results))
+      .catch(next);
   });

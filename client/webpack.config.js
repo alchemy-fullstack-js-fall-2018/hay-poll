@@ -14,10 +14,10 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    port: 7899,
+    port: 9111,
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:7891'
+      '/api': 'http://localhost:8000'
     }
   },
   plugins: [
