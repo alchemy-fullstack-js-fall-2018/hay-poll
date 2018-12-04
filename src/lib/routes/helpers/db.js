@@ -1,7 +1,9 @@
-require('dotenv').config();
-const connect = require('../../../lib/util/connect');
-connect(`${process.env.MONGODB_URI}`);
-const mongoose = require('mongoose');
+import { config } from 'dotenv';
+import connect from '../../utils/connect';
+import mongoose from 'mongoose';
+
+config();
+connect(process.env.MONGODB_URI);
 
 afterAll(() => {
   return mongoose.disconnect();

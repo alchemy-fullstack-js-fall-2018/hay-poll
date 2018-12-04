@@ -1,6 +1,6 @@
-const { dropCollection } = require('./db');
-const request = require('supertest');
-const app = require('../../routes/app');
+import { dropCollection } from './db';
+import request from 'supertest';
+import app from '../../routes/app';
 
 beforeEach(() => {
   return dropCollection('polls');
@@ -8,7 +8,7 @@ beforeEach(() => {
 
 let createdPolls;
 
-let polls = [
+const polls= [
   {
     title: 'Poll1',
     options: [
@@ -36,3 +36,24 @@ let polls = [
     ]
   }
 ];
+
+const createPoll = poll => {
+  return request(app)
+    .post('/api/polls')
+    .send(poll)
+    .then(res => res.body);
+};
+
+beforeEach(() => {
+  return Promise.all(polls.map(createPoll)).then(pollsRes => {
+    createdPolls = pollsRes;
+  });
+});
+
+const getPolls = () => createdPolls;
+const pollsSeedData = () => polls;
+
+module.exports = {
+  getPolls,
+  pollsSeedData
+};
