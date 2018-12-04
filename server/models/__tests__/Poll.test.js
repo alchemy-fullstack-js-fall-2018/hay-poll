@@ -1,18 +1,15 @@
 import Poll from '../Poll';
 import { getErrors } from '../../utils/helpers';
 const chance = require('chance').Chance();
-
+import { mockPoll } from '../../utils/fixtures/poll';
 
 describe('poll model', () => {
+
   test('validates a good model', () => {
-    const data = {
-      title: chance.string({ length: 10 }),
-      description: chance.string({ length: 30 }),
-      choices: Array.apply(null, { length: 4 })
-        .map(() => ({ description: chance.string({ length: 15 }) }))
-    };
+    const data = mockPoll();
     const poll = new Poll(data);
     const jsonPoll = poll.toJSON();
+
     expect(jsonPoll).toEqual({
       ...data,
       _id: expect.any(Object),

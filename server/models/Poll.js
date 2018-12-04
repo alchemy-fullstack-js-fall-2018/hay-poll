@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const pollSchema = new Schema({
+const pollSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -15,4 +15,4 @@ const pollSchema = new Schema({
   }
 });
 
-export default model('Poll', pollSchema);
+export default mongoose.model('Poll', pollSchema);
