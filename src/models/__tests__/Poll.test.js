@@ -1,6 +1,5 @@
 import Poll from '../Poll';
 import { getErrors } from '../../utils/helpers';
-import { Types } from 'mongoose';
 const chance = require('chance').Chance();
 
 
@@ -22,7 +21,14 @@ describe('poll model', () => {
     });
   });
 
+  test('requires title, description, and choices', () => {
+    const poll = new Poll({});
+    const errors = getErrors(poll.validateSync(), 3);
 
+    expect(errors.title.properties.message).toEqual('Path `title` is required.');
+    expect(errors.description.properties.message).toEqual('Path `description` is required.');
+    expect(errors.choices.properties.message).toEqual('Validator failed for path `choices` with value ``');
+  });
 
 
 });
