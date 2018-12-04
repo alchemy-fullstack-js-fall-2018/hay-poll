@@ -10,6 +10,22 @@ export default Router()
       .catch(next);
   })
 
+  .post('/polls/:id/votes', (req, res, next) => {
+    const { poll, selection } = req.body;
+    Vote.create({ poll, selection })
+      .then(vote => res.json(vote))
+      .catch(next);
+  })
+
+  .get('/polls/:id/results', (req, res, next) => {
+    const { id } = req.params;
+    Votes.find({ poll: id })
+      .lean()
+      .then(poll => poll.results())
+      .then(results => res.json(results))
+      .catch(next);
+  })
+
   .get('/polls/:id', (req, res, next) => {
     const { id } = req.params;
     Poll.findById(id)
@@ -22,12 +38,5 @@ export default Router()
     Poll.find()
       .lean()
       .then(polls => res.json(polls))
-      .catch(next);
-  })
-
-  .post('/polls/:id/votes', (req, res, next) => {
-    const { poll, selection } = req.body;
-    Vote.create({ poll, selection })
-      .then(vote => res.json(vote))
       .catch(next);
   });

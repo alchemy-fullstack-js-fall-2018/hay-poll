@@ -15,4 +15,11 @@ const pollSchema = new mongoose.Schema({
   }
 });
 
+pollSchema.methods.results = function () {
+  return this.model('Vote').aggregate([
+    { $match: { poll: this._id } },
+    { $group: { _id: null, count: { $sum: 1 } } }
+  ]);
+};
+
 export default mongoose.model('Poll', pollSchema);

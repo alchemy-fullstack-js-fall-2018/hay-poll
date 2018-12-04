@@ -97,4 +97,37 @@ describe('polls route', () => {
         })
     });
   });
+
+  test.skip('get to /api/polls/:id/results', async () => {
+
+    const poll = mockPoll();
+    let createdPoll;
+    let id;
+
+    await request(app)
+      .post('/api/polls')
+      .send(poll)
+      .then(({ body }) => createdPoll = body);
+
+    id = createdPoll._id;
+    const vote = {
+      poll: createdPoll._id,
+      selection: createdPoll.choices[chance.natural({ min: 0, max: 3 })]._id
+    }
+
+    const sendVote = (id, amount) => {
+      request(app)
+        .post(`/api/polls/${id}/votes`)
+        .send(vote);
+    };
+
+    await sendVote(id);
+    await request(app)
+      .get(`/api/polls/${id}/results`)
+      .then(({ body }) => expect(body).toEqual({ count: 1 }))
+
+
+
+  });
+
 });
