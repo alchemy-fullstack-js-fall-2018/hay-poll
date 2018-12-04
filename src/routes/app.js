@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import pollsRoutes from './api/polls';
 
 const app = express();

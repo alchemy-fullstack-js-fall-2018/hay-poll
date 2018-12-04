@@ -12,3 +12,5 @@ const pollSchema = new mongoose.Schema({
     }
   }]
 });
+
+export default mongoose.model('Poll', pollSchema);
