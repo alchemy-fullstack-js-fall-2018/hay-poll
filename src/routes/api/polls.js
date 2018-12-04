@@ -8,5 +8,13 @@ export default Router()
     Poll.create({ title, options })
       .then(poll => res.json(poll))
       .catch(next);
+  })
+
+  .get('/polls', (req, res, next) => {
+    Poll
+      .find()
+      .lean()
+      .then(polls => res.json(polls))
+      .catch(next);
   });
 

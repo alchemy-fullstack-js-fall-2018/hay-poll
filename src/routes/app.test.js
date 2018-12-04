@@ -51,4 +51,24 @@ describe('polls', () => {
         });
       });
   });
+
+
+  it('can get a list of all polls', () => {
+    const poll1 = { title: 'A Poll', options: [{ choice: 'a choice' }, { choice: 'a choice' }] };
+    const poll2 = { title: 'Another Poll', options: [{ name: 'a choice' }, { name: 'a choice' }] };
+    return Promise.all([createPoll(poll1), createPoll(poll2)])
+      .then(([poll1Created, poll2Created]) => {
+        return Promise.all([
+          Promise.resolve(poll1Created),
+          Promise.resolve(poll2Created),
+          request(app).get('/api/polls')
+        ]);
+      })
+      .then(([poll1Created, poll2Created, res]) => {
+        const polls = res.body;
+        expect(polls).toHaveLength(12);
+        expect(polls).toContainEqual(poll1Created);
+        expect(polls).toContainEqual(poll2Created);
+      });
+  });
 });
