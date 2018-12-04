@@ -9,10 +9,17 @@ export default Router()
       .catch(next);
   })
 
-  .get('/polls', (req, res, next) => {
-    Poll.find()
+  .get('/polls/:id', (req, res, next) => {
+    const { id } = req.params;
+    Poll.findById(id)
       .lean()
       .then(poll => res.json(poll))
       .catch(next);
+  })
 
+  .get('/polls', (req, res, next) => {
+    Poll.find()
+      .lean()
+      .then(polls => res.json(polls))
+      .catch(next);
   });

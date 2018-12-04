@@ -39,8 +39,8 @@ describe('polls route', () => {
       .get('/api/polls')
       .then(res => {
         checkStatus(200)(res);
-        return polls.forEach(poll => {
-          return expect(res.body).toContainEqual({
+        polls.forEach(poll => {
+          expect(res.body).toContainEqual({
             ...poll,
             _id: expect.any(String),
             __v: expect.any(Number),
@@ -52,4 +52,21 @@ describe('polls route', () => {
       });
   });
 
+  test('get to /api/polls/:id', async () => {
+
+    const poll = mockPoll();
+    let createdPoll;
+
+    await request(app)
+      .post('/api/polls')
+      .send(poll)
+      .then(({ body }) => createdPoll = body);
+
+    await request(app)
+      .get(`/api/polls/${createdPoll._id}`)
+      .then(res => {
+        checkStatus(200)(res);
+        expect(res.body).toEqual(createdPoll)
+    });
+  });
 });
