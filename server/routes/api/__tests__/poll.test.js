@@ -2,7 +2,7 @@ import { checkStatus } from '../../../utils/helpers';
 import { disconnect } from '../../../utils/connect'
 import { dropCollection } from '../../../utils/db';
 import request from 'supertest';
-import app from '../../app';
+import app from '../../../app';
 const chance = require('chance').Chance();
 import { mockPoll, mockPolls, postPoll } from '../../../utils/fixtures/poll';
 

@@ -1,7 +1,7 @@
 import express from 'express';
-import apiRoutes from './api';
-import cors from '../middleware/cors';
-import spa from '../middleware/spa';
+import apiRoutes from './routes/api';
+import cors from './middleware/cors';
+import spa from './middleware/spa';
 
 const app = express();
 

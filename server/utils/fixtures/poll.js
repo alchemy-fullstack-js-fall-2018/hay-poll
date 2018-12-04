@@ -1,4 +1,4 @@
-import app from '../../routes/app';
+import app from '../../app';
 import request from 'supertest';
 const chance = require('chance').Chance();
 

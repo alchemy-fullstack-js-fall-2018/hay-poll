@@ -1,5 +1,3 @@
-import request from 'supertest';
-
 const getErrors = (validation, numberExpected) => {
     expect(validation).toBeDefined();
     const errors = validation.errors;

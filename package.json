@@ -8,11 +8,11 @@
     "test:watch": "npm run test -- --watch",
     "preinstall": "cd client && npm i",
     "build": "npm run build:server && npm run build:client",
-    "build:server": "babel src -d lib -s true",
+    "build:server": "babel server -d lib -s true",
     "build:client": "cd client && npm run build",
     "heroku-postbuild": "npm run build && rm -rf client/node_modules",
     "start": "node lib/index.js",
-    "start:watch": "nodemon src/index.js --exec babel-node"
+    "start:watch": "nodemon server/index.js --exec babel-node"
   },
   "keywords": [],
   "author": "",

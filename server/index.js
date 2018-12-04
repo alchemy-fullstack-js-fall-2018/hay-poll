@@ -1,4 +1,4 @@
-import app from './routes/app';
+import app from './app';
 import { config } from 'dotenv';
 import connect from './utils/connect';
 
