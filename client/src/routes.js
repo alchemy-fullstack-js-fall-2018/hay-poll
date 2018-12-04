@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
-import Polls from './containers/polls/Polls';
+import Polls from './containers/polls/PollsContainer';
 import PollDetails from './containers/polls/PollDetails';
-import CreatePoll from './components/poll/CreatePoll';
+import CreatePoll from './components/poll/Poll';
 
 export const ROUTES = {
   HOME: {
