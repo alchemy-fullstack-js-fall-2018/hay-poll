@@ -33,4 +33,19 @@ export default Router()
     Vote.create({ poll, option, user })
       .then(vote => res.json(vote))
       .catch(next);
+  })
+
+  .post('/', (req, res, next) => {
+    const { poll } = req.params;
+    const { option, user } = req.body;
+
+    Vote.create({ poll, option, user })
+      .then(vote => res.json(vote))
+      .catch(next);
+  })
+
+  .get('/:id/results', (req, res, next) => {
+    const { id } = req.params;
+    
+    
   });
