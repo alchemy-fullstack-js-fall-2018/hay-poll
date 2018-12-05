@@ -1,0 +1,40 @@
+[
+  {
+    "_id" : "5c0729019ce98c6d4af5c534",
+    "title" : "niwatu",
+    "options" : [
+      {
+        "_id" : "5c0729019ce98c6d4af5c537",
+        "choice" : "uzeilepat"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c536",
+        "choice" : "pa"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c535",
+        "choice" : "bistukmuv"
+      }
+    ],
+    "__v" : 0
+  },
+  {
+    "_id" : "5c0729019ce98c6d4af5c530",
+    "title" : "finde",
+    "options" : [
+      {
+        "_id" : "5c0729019ce98c6d4af5c533",
+        "choice" : "dopdug"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c532",
+        "choice" : "red"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c531",
+        "choice" : "hobgecor"
+      }
+    ],
+    "__v" : 0
+}
+]
