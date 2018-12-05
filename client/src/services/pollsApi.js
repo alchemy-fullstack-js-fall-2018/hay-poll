@@ -1,6 +1,6 @@
 export const getPolls = () => {
   return fetch('/api/polls')
-    .then(res => res.json);
+    .then(res => res.json());
 };
 
 export const postVote = (id, vote) => {
@@ -17,5 +17,5 @@ export const postPoll = poll => {
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(poll)
   })
-    .then(res => res.json);
+    .then(res => res.json());
 };

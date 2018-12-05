@@ -5,12 +5,10 @@ import Vote from '../../models/Vote';
 export default Router()
   .post('/', (req, res, next) => {
 
-    console.log('issue, options)');
     const { issue, options } = req.body;
 
     Poll.create({ issue, options })
       .then(poll => {
-        console.log(poll)
         res.json(poll)})
       .catch(next)
   })
