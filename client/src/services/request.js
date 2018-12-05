@@ -1,4 +1,5 @@
 export const get = url => {
+  console.log('hi there');
   return fetch(url)
     .then(res => res.json());
 };
