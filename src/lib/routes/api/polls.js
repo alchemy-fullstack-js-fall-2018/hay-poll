@@ -17,7 +17,7 @@ export default Router()
       .catch(next);
   })
 
-  .get('/id', (req, res, next) => {
+  .get('/:id', (req, res, next) => {
     const {id} = req.params;
 
     Poll.findById(id)

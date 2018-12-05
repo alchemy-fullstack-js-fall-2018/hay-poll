@@ -1,7 +1,10 @@
-require('dotenv').config();
-require('./utils/connect')();
-const { createServer } = require('http');
-const app = require('./routes/app');
+import { config } from 'dotenv';
+import connect from './utils/connect';
+import { createServer } from 'http';
+import app from './routes/app';
+
+config();
+connect();
 
 const port = process.env.PORT || 7888;
 

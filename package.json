@@ -11,7 +11,7 @@
     "build:server": "babel src -d lib -s true",
     "build:client": "cd client && npm run build",
     "heroku-postbuild": "npm run build && rm -rf client/node_modules",
-    "start": "node src/lib/index.js",
+    "start": "node lib/index.js",
     "start:watch": "nodemon src/lib/index.js --exec babel-node"
   },
   "jest": {
@@ -38,8 +38,11 @@
     "supertest": "^3.3.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "mongoose": "^5.3.14"
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.14",
+    "morgan": "^1.9.1"
   }
 }
