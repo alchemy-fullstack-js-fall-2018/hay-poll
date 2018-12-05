@@ -63,4 +63,36 @@ describe('poll routes', () => {
         });
       });
   });
+
+  it('gets a poll by its id', () => {
+    return request(app).get(`/api/polls/${createdPolls[0]._id}`)
+      .then(res => {
+        expect(res.body).toEqual({ ...createdPolls[0], __v: expect.any(Number) });
+      });
+  });
+
+  it('creates a poll', () => {
+    return request(app).post('/api/polls')
+      .send({
+        title: 'Who wants to clean my room?',
+        candidates: [{ name: 'kid1' }, { name: 'kid2' }]
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          __v: expect.any(Number),
+          title: 'Who wants to clean my room?',
+          candidates: [
+            {
+              _id: expect.any(String),
+              name: 'kid1'
+            },
+            {
+              _id: expect.any(String),
+              name: 'kid2'
+            }
+          ]
+        });
+      });
+  });
 });

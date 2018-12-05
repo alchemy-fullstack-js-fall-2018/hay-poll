@@ -9,6 +9,14 @@ export default Router()
       .then(polls => res.json(polls));
   })
 
+  .get('/:id', (req, res) => {
+    const { id } = req.params;
+    Poll.findById(id)
+      .then(poll => {
+        res.json(poll)
+      });
+  })
+
   .post('/', (req, res, next) => {
     const { title, candidates } = req.body;
 
