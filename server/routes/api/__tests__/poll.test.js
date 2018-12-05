@@ -1,5 +1,5 @@
 import { checkStatus } from '../../../utils/helpers';
-import { disconnect } from '../../../utils/connect'
+import { connect, disconnect } from '../../../utils/connect'
 import { dropCollection } from '../../../utils/db';
 import request from 'supertest';
 import app from '../../../app';
@@ -9,6 +9,23 @@ import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../utils
 
 describe('polls route', () => {
 
+  let createdUser;
+  let createdToken;
+
+  beforeEach(async () => {
+
+    await request(app)
+      .post('/api/auth/signup')
+      .send({
+        email: 'jack',
+        password: 'abcdef'
+      })
+      .then(res => {
+        createdUser = res.body;
+        createdToken = res.header['x-auth-token'];
+      });
+
+  });
   beforeEach(async () => {
     await dropCollection('polls');
     await dropCollection('votes');
@@ -23,6 +40,7 @@ describe('polls route', () => {
 
     await request(app)
       .post('/api/polls')
+      .set('Authorization', `Bearer ${createdToken}`)
       .send(poll)
       .then(res => {
         checkStatus(200)(res);
@@ -38,7 +56,7 @@ describe('polls route', () => {
   test('get to /api/polls', async () => {
 
     const polls = mockPolls(10);
-    polls.forEach(poll => postPoll(poll));
+    polls.forEach(poll => postPoll(poll, createdToken));
 
     await request(app)
       .get('/api/polls')
@@ -64,6 +82,7 @@ describe('polls route', () => {
 
     await request(app)
       .post('/api/polls')
+      .set('Authorization', `Bearer ${createdToken}`)
       .send(poll)
       .then(({ body }) => createdPoll = body);
 
@@ -82,6 +101,7 @@ describe('polls route', () => {
 
     await request(app)
       .post('/api/polls')
+      .set('Authorization', `Bearer ${createdToken}`)
       .send(poll)
       .then(({ body }) => createdPoll = body);
 
@@ -92,6 +112,7 @@ describe('polls route', () => {
 
     await request(app)
       .post(`/api/polls/${createdPoll._id}/votes`)
+      .set('Authorization', `Bearer ${createdToken}`)
       .send(vote)
       .then(res => {
         checkStatus(200)(res);
@@ -110,12 +131,13 @@ describe('polls route', () => {
 
     await request(app)
       .post('/api/polls')
+      .set('Authorization', `Bearer ${createdToken}`)
       .send(poll)
       .then(({ body }) => createdPoll = body);
 
     const quantities = randomVoteQuantities(poll.choices.length)
     const voteArrays = randomVoteArrays(quantities, createdPoll);
-    await runVotes(createdPoll, voteArrays);
+    await runVotes(createdPoll, voteArrays, createdToken);
 
     await request(app)
       .get(`/api/polls/${createdPoll._id}/results`)

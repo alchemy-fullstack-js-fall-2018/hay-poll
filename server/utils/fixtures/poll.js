@@ -16,9 +16,10 @@ export const mockPoll = () => chance.poll();
 export const mockPolls = length => Array.apply(null, { length })
   .reduce(acc => [...acc, mockPoll()], []);
 
-export const postPoll = poll => {
+export const postPoll = (poll, token) => {
   return request(app)
     .post('/api/polls')
+    .set('Authorization', `Bearer ${token}`)
     .send(poll)
     .then(res => res.body);
 };

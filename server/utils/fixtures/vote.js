@@ -13,9 +13,10 @@ const vote = (poll, i) => ({
   selection: poll.choices[i]._id
 });
 
-const sendVote = (poll, vote) => {
+const sendVote = (poll, vote, token) => {
   return request(app)
     .post(`/api/polls/${poll._id}/votes`)
+    .set('Authorization', `Bearer ${token}`)
     .send(vote);
 };
 
@@ -28,11 +29,11 @@ export const randomVoteArrays = (quantities, poll) => quantities.map((quantity, 
   return Array(quantity).fill(poll.choices[i]._id);
 });
 
-export const runVotes = (poll, voteArrays) => {
+export const runVotes = (poll, voteArrays, token) => {
   return voteArrays.forEach((array, index) => {
     array.forEach(async () => {
       const voteToSend = vote(poll, index);
-      await sendVote(poll, voteToSend);
+      await sendVote(poll, voteToSend, token);
     })
   })
 }

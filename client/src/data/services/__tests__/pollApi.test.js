@@ -3,9 +3,9 @@ import { getPolls, getPoll } from '../pollApi';
 import mockGetPolls from '../../../testing/fixtures/getPolls.json';
 import mockGetPoll from '../../../testing/fixtures/getPoll.json';
 
-jest.mock('../../lib/request.js', id => ({
+jest.mock('../../lib/request.js', () => ({
   get: url => {
-    if(url.startsWith(`/api/polls/${id}`)) {
+    if(url.startsWith('/api/polls/')) {
       return Promise.resolve(mockGetPoll);
     }
     if(url.startsWith('/api/polls')) {
@@ -36,6 +36,8 @@ describe('pollApi routes', () => {
           expect(polls).toContainEqual({
             __v: expect.any(Number),
             _id: expect.any(String),
+            title: expect.any(String),
+            description: expect.any(String),
             choices: [
               { _id: expect.any(String), description: expect.any(String) },
               { _id: expect.any(String), description: expect.any(String) },
@@ -59,6 +61,8 @@ describe('pollApi routes', () => {
           expect(poll).toEqual({
             __v: expect.any(Number),
             _id: expect.any(String),
+            title: expect.any(String),
+            description: expect.any(String),
             choices: [
               { _id: expect.any(String), description: expect.any(String) },
               { _id: expect.any(String), description: expect.any(String) },
