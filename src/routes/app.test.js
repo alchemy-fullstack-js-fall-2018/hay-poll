@@ -174,10 +174,26 @@ describe('poll routes', () => {
     })
 
     it('allows users to get results of the poll', () => {
+
+      const option1 = createdPolls[0].options[0];
+      const option2 = createdPolls[0].options[1];
+      const option3 = createdPolls[0].options[2];
+
       return request(app)
         .get(`/api/polls/${createdPolls[0]._id}/results`)
         .then(result => {
-          expect(result.body).toEqual('sldfjk')
+          expect(result.body).toContainEqual({
+            _id: { choiceId: option1._id, choiceName: option1.choice },
+            totalVotes: expect.any(Number)
+          })
+          expect(result.body).toContainEqual({
+            _id: { choiceId: option2._id, choiceName: option2.choice },
+            totalVotes: expect.any(Number)
+          })
+          expect(result.body).toContainEqual({
+            _id: { choiceId: option3._id, choiceName: option3.choice },
+            totalVotes: expect.any(Number)
+          })
         })
     })
    })
