@@ -13,7 +13,7 @@ export default Router()
     const { id } = req.params;
     Poll.findById(id)
       .then(poll => {
-        res.json(poll)
+        res.json(poll);
       });
   })
 
