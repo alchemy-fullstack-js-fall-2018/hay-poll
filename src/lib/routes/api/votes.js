@@ -2,11 +2,12 @@ import Vote from '../../models/Vote';
 import { Router } from 'express';
 
 export default Router()
-  .post('/:id/votes', (req, res, next) => {
-    const { pollId } = req.params;
-    const { optionId, userId } = req.body;
+  .post('/', (req, res, next) => {
+    const { poll } = req.params;
+    console.log('poll', poll)
+    const { option, user } = req.body;
 
-    Vote.create({ pollId, optionId, userId })
+    Vote.create({ poll, option, user })
       .then(vote => res.json(vote))
       .catch(next);
   });

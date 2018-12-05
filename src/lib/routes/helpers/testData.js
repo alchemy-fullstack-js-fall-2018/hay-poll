@@ -1,9 +1,14 @@
 import { dropCollection } from './db';
 import request from 'supertest';
 import app from '../../routes/app';
+import { identity } from 'rxjs';
 
 beforeEach(() => {
   return dropCollection('polls');
+});
+
+beforeEach(() => {
+  return dropCollection('users');
 });
 
 beforeEach(() => {
@@ -49,23 +54,12 @@ const users = [
     password: '123'
   },
   {
-    email: 'test@456.com',
-    password: '456'
+    email: 'test@457.com',
+    password: '457'
   }
 ];
 
-let votes = [
-  {
-    userId: null,
-    pollId: null,
-    optionId: null
-  },
-  {
-    userId: null,
-    pollId: null,
-    optionId: null
-  }
-];
+let votes = [];
 
 const createPoll = poll => {
   return request(app)
@@ -75,8 +69,9 @@ const createPoll = poll => {
 };
 
 const createVote = vote => {
+  const id = vote.poll;
   return request(app)
-    .post('/api/votes')
+    .post(`/api/polls/${id}/votes`)
     .send(vote)
     .then(res => res.body);
 };
@@ -101,14 +96,18 @@ beforeEach(() => {
 });
 
 beforeEach(() => {
-  console.log('createdPolls', createdPolls);
-  votes[0].pollId = createdPolls[0]._id;
-  votes[0].userId = createdUsers[0]._id;
-  votes[0].optionId = createdPolls[0].options[0]._id;
+  votes = [];
+  votes.push({
+    poll: createdPolls[0]._id,
+    user: createdUsers[0]._id,
+    option: createdPolls[0].options[0]._id
+  });
 
-  votes[1].pollId = createdPolls[1]._id;
-  votes[1].userId = createdUsers[1]._id;
-  votes[1].optionId = createdPolls[1].options[1]._id;
+  votes.push({
+    poll: createdPolls[1]._id,
+    user: createdUsers[1]._id,
+    option: createdPolls[1].options[1]._id
+  });
 
   return Promise.all(votes.map(createVote)).then(votesRes => {
     createdVotes = votesRes;
@@ -118,7 +117,17 @@ beforeEach(() => {
 const getPolls = () => createdPolls;
 const pollsSeedData = () => polls;
 
+const getUsers = () => createdUsers;
+const usersSeedData = () => users;
+
+const getVotes = () => createdVotes;
+const votesSeedData = () => votes;
+
 module.exports = {
   getPolls,
-  pollsSeedData
+  getVotes,
+  getUsers,
+  pollsSeedData,
+  votesSeedData,
+  usersSeedData
 };

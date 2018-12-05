@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use('/api/polls', pollsRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/votes', votesRoutes);
+// app.use('/api/polls/:poll/votes', votesRoutes);
 app.use(handler);
 
 export default app;
