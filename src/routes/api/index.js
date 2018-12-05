@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import test from './test';
+import poll from './poll';
 
 const resources = [
-  test
+  poll
 ];
 
 export default Router().use('/', ...resources);

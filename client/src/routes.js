@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
-// import Polls from './containers/polls/Polls';
-// import PollDetails from './containers/polls/PollDetails';
-// import CreatePoll from './components/poll/CreatePoll';
+import Polls from './containers/polls/Polls';
+import PollDetails from './containers/polls/PollDetails';
+import CreatePoll from './components/poll/CreatePoll';
 // import { Signup, Login } from './components/auth/Auth';
 // import { withSession } from './components/auth/withSession';
 
@@ -12,6 +12,21 @@ export const ROUTES = {
     path: '/',
     Component: Home,
     linkTo: () => '/'
+  },
+  POLLS: {
+    path: '/polls',
+    Component: Polls,
+    linkTo: () => '/polls'
+  },
+  CREATE_POLL: {
+    path: '/polls/create',
+    Component: CreatePoll,
+    linkTo: () => '/polls/create'
+  },
+  POLL: {
+    path: '/polls/:id',
+    Component: PollDetails,
+    linkTo: id => `/polls/${id}`
   }
 };
 

@@ -5,15 +5,15 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { fetchPoll } from '../../actions/polls';
 import { withFetch } from '../../components/withFetch';
 import { getPoll } from '../../selectors/polls';
-import { getResults } from '../../selectors/results';
-import { fetchResults } from '../../actions/results';
+// import { getResults } from '../../selectors/results';
+// import { fetchResults } from '../../actions/results';
 import { postVotes } from '../../services/polls';
 
 class PollDetails extends PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,
-    poll: PropTypes.object,
-    results: PropTypes.array
+    poll: PropTypes.object
+    // results: PropTypes.array
   };
 
   state = {
@@ -102,14 +102,14 @@ class PollDetails extends PureComponent {
 
 const mapStateToProps = state => ({
   poll: getPoll(state),
-  results: getResults(state)
+  // results: getResults(state)
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
   fetch() {
     const { id } = props.match.params;
     dispatch(fetchPoll(id));
-    dispatch(fetchResults(id));
+    // dispatch(fetchResults(id));
   }
 });
 
