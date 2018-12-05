@@ -6,11 +6,18 @@ import mockPostVote from '../fixtures/postVote.json';
 
 const polls = mockPollsJson;
 const poll = mockPollJson;
+const createdPoll = mockPostPoll;
 
 export const getPolls = () => {
   return Promise.resolve(polls);
 };
 
-export const getPoll = () => {
-  return Promise.resolve(poll);
+export const getPoll = id => {
+  return Promise.resolve(id, poll);
 };
+
+export const postPoll = id => {
+  return Promise.resolve(id, createdPoll);
+};
+
+
