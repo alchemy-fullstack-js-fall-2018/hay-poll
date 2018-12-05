@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
-// import Polls from './containers/polls/Polls';
+import Polls from './containers/polls/Polls';
 
 export const ROUTES = {
   HOME: {
@@ -9,11 +9,11 @@ export const ROUTES = {
     Component: Home,
     linkTo: () => '/'
   },
-  // POLLS: {
-  //   path: '/polls',
-  //   Component: Polls,
-  //   linkTo: () => '/polls'
-  // },
+  POLLS: {
+    path: '/polls',
+    Component: Polls,
+    linkTo: () => '/polls'
+  },
 
 };
 
