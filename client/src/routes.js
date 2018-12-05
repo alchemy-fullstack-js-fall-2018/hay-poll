@@ -4,6 +4,7 @@ import Home from './components/home/Home';
 import Polls from './containers/polls/PollsContainer';
 import PollDetails from './containers/polls/PollDetails';
 import CreatePoll from './components/poll/Poll';
+import { withSession } from './components/auth/withSession';
 
 export const ROUTES = {
   HOME: {
@@ -13,7 +14,7 @@ export const ROUTES = {
   },
   POLLS: {
     path: '/polls',
-    Component: Polls,
+    Component: withSession(Polls),
     linkTo: () => '/polls'
   },
   CREATE_POLL: {

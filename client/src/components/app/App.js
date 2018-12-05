@@ -1,6 +1,17 @@
 import React from 'react';
-import PollsContainer from '../../containers/polls/PollsContainer';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { routerRoutes } from '../../routes';
+import Header from './Header';
 
 export default function App() {
-  return <PollsContainer />;
+  return (
+    <Router>
+      <>
+        <Header />
+        <Switch>
+          {routerRoutes()}
+        </Switch>
+      </>
+    </Router>
+  );
 }

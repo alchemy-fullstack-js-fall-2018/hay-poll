@@ -1,18 +1,29 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-export default function withFetch(Component) {
-  return class WithFetchComponent extends PureComponent {
+export const withFetch = (Component, options = {}) => {
+  return class WithFetch extends PureComponent {
     static propTypes = {
       fetch: PropTypes.func.isRequired
     };
 
+    state = {
+      data: null
+    };
+
     componentDidMount() {
-      this.props.fetch();
+      const promise = this.props.fetch();
+      if(!promise || typeof promise.then !== 'function') return;
+
+      promise
+        .then(data => this.setState({ data }));
     }
 
     render() {
-      return <Component {...this.props} />;
+      const { dataKey = 'data', defaultValue = null } = options;
+      const { data = defaultValue } = this.state;
+      const props = { ...this.props, [dataKey]: data };
+      return <Component {...props} />;
     }
   };
-}
+};
