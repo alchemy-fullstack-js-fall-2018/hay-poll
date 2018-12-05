@@ -9,5 +9,13 @@ export const postVote = (id, vote) => {
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(vote)
   });
+};
 
-}
+export const postPoll = poll => {
+  return fetch('/api/polls', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(poll)
+  })
+    .then(res => res.json);
+};

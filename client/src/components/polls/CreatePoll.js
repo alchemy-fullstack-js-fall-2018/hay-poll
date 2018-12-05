@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PollPreview from './PollPreview';
+import { createPoll } from '../../actions/polls';
 
 export default class CreatePoll extends Component {
   static propTypes = {
-  }
+    // createPoll: PropTypes.func.isRequired
+  };
 
   state = {
-    title: '',
+    question: '',
     option: '',
     options: []
   };
@@ -16,30 +18,36 @@ export default class CreatePoll extends Component {
     this.setState({ option: target.value });
   };
 
-  updateTitle = ({ target }) => {
-    this.setState({ title: target.value });
+  updateQuestion = ({ target }) => {
+    this.setState({ question: target.value });
   };
-
 
   updateOptionsArray = () => {
     const newOption = this.state.options.concat(this.state.option);
     this.setState({ options: newOption });
+  };
 
-  }
+  handleSubmit = event => {
+    const { question, options } = this.state;
+    // const { createPoll } = this.props;
+    event.preventDefault();
+    createPoll({ issue: question, options });
+  };
 
   render() {
-    const { title, option, options } = this.state;
+    const { question, option, options } = this.state;
     return (
       <div>
         <h1>Create Poll!</h1>
 
-        <label>Add Title</label>
-        <input type="text" value={title} onChange={this.updateTitle} />
+        <label>Add Question</label>
+        <input type="text" value={question} onChange={this.updateQuestion} />
 
         <label>Add Option</label>
         <input type="text" value={option} onChange={this.updateOption} />
-        <button onClick={this.updateOptionsArray}>Add</button>
-        <PollPreview title={title} options={options} />
+        <button onClick={this.updateOptionsArray}>Add Option</button>
+        <PollPreview question={question} options={options} />
+        {options.length > 1 && <button onClick={this.handleSubmit}>Create Poll</button>}
       </div>
     );
   }
