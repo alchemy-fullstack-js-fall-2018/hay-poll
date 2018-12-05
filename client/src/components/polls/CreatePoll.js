@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react';
 import PollPreview from './PollPreview';
-import { createPoll } from '../../actions/polls';
+// import { createPoll } from '../../actions/polls';
 
-export default class CreatePoll extends Component {
+export default class CreatePoll extends PureComponent {
   static propTypes = {
-    // createPoll: PropTypes.func.isRequired
   };
 
   state = {
@@ -29,9 +27,14 @@ export default class CreatePoll extends Component {
 
   handleSubmit = event => {
     const { question, options } = this.state;
-    // const { createPoll } = this.props;
+    const { createPoll } = this.props;
     event.preventDefault();
-    createPoll({ issue: question, options });
+
+    const formattedOptions = options.map(option => {
+      return ({ choice: option });
+    });
+
+    createPoll({ issue: question, options: formattedOptions });
   };
 
   render() {

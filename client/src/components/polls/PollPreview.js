@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function PollPreview({ question, options }) {
   const optionList = options.map((option, i) => {

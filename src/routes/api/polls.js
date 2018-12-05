@@ -9,7 +9,9 @@ export default Router()
     const { issue, options } = req.body;
 
     Poll.create({ issue, options })
-      .then(poll => res.json(poll))
+      .then(poll => {
+        console.log(poll)
+        res.json(poll)})
       .catch(next)
   })
 

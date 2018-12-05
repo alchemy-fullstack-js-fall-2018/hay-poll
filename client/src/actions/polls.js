@@ -12,7 +12,7 @@ export const submitVote = vote => ({
   payload: postVote(vote)
 });
 
-export const CREATE_POLL = 'REATE_POLL';
+export const CREATE_POLL = 'CREATE_POLL';
 export const createPoll = poll => ({
   type: CREATE_POLL,
   payload: postPoll(poll)
