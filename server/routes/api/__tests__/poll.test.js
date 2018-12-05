@@ -5,12 +5,17 @@ import request from 'supertest';
 import app from '../../../app';
 const chance = require('chance').Chance();
 import { mockPoll, mockPolls, postPoll } from '../../../utils/fixtures/poll';
-
+import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../utils/fixtures/vote';
 
 describe('polls route', () => {
 
-  beforeEach(async () => await dropCollection('polls'));
-  afterAll(async () => await disconnect());
+  beforeEach(async () => {
+    await dropCollection('polls');
+    await dropCollection('votes');
+  });
+  afterAll(async () => {
+    await disconnect()
+  });
 
   test('post to /api/polls', async () => {
 
@@ -98,36 +103,30 @@ describe('polls route', () => {
     });
   });
 
-  test.skip('get to /api/polls/:id/results', async () => {
+  test('get to /api/polls/:id/results', async () => {
 
     const poll = mockPoll();
     let createdPoll;
-    let id;
 
     await request(app)
       .post('/api/polls')
       .send(poll)
       .then(({ body }) => createdPoll = body);
 
-    id = createdPoll._id;
-    const vote = {
-      poll: createdPoll._id,
-      selection: createdPoll.choices[chance.natural({ min: 0, max: 3 })]._id
-    }
+    const quantities = randomVoteQuantities(poll.choices.length)
+    const voteArrays = randomVoteArrays(quantities, createdPoll);
+    await runVotes(createdPoll, voteArrays);
 
-    const sendVote = (id, amount) => {
-      request(app)
-        .post(`/api/polls/${id}/votes`)
-        .send(vote);
-    };
-
-    await sendVote(id);
     await request(app)
-      .get(`/api/polls/${id}/results`)
-      .then(({ body }) => expect(body).toEqual({ count: 1 }))
-
-
-
+      .get(`/api/polls/${createdPoll._id}/results`)
+      .then(({ body }) => {
+        quantities.forEach(quantity => {
+          expect(body).toContainEqual({
+            _id: expect.any(String),
+            count: quantity
+          })
+        })
+      })
   });
 
 });

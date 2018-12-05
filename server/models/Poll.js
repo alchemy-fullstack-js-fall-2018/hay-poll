@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 
 const pollSchema = new mongoose.Schema({
   title: {
@@ -15,10 +15,16 @@ const pollSchema = new mongoose.Schema({
   }
 });
 
-pollSchema.methods.results = function () {
+pollSchema.methods.results = function() {
   return this.model('Vote').aggregate([
     { $match: { poll: this._id } },
-    { $group: { _id: null, count: { $sum: 1 } } }
+    {
+      $group: {
+          _id: "$selection",
+          count: { $sum: 1 }
+        }
+    },
+    { $sort: { "count": -1 } }
   ]);
 };
 

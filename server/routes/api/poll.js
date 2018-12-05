@@ -19,10 +19,9 @@ export default Router()
 
   .get('/polls/:id/results', (req, res, next) => {
     const { id } = req.params;
-    Votes.find({ poll: id })
-      .lean()
+    Poll.findById(id)
       .then(poll => poll.results())
-      .then(results => res.json(results))
+      .then(results =>res.json(results))
       .catch(next);
   })
 

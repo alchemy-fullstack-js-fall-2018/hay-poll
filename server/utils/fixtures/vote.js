@@ -8,14 +8,31 @@ export const mockVote = () => ({
   selection: Types.ObjectId()
 });
 
-// export const mockVote = () => chance.vote();
+const vote = (poll, i) => ({
+  poll: poll._id,
+  selection: poll.choices[i]._id
+});
 
-// export const mockVotes = length => Array.apply(null, { length })
-//   .reduce(acc => [...acc, mockVote()], []);
+const sendVote = (poll, vote) => {
+  return request(app)
+    .post(`/api/polls/${poll._id}/votes`)
+    .send(vote);
+};
 
-// export const postVote = vote => {
-//   return request(app)
-//     .post('/api/polls/:id/votes')
-//     .send(vote)
-//     .then(res => res.body);
-// };
+export const randomVoteQuantities = length => Array(length)
+  .fill()
+  .map(() => chance.natural({ min: 1, max: 20 }));
+
+export const randomVoteArrays = (quantities, poll) => quantities.map((quantity, i) => {
+  const id = poll.choices[i]._id;
+  return Array(quantity).fill(poll.choices[i]._id);
+});
+
+export const runVotes = (poll, voteArrays) => {
+  return voteArrays.forEach((array, index) => {
+    array.forEach(async () => {
+      const voteToSend = vote(poll, index);
+      await sendVote(poll, voteToSend);
+    })
+  })
+}
