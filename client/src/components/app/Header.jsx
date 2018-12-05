@@ -30,7 +30,8 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <h1>Redux Blogging</h1>
+      <h1>Hay Poll</h1>
+      <h6>Get it... Hay...</h6>
       <StyledNav>
         {LinkComponents}
       </StyledNav>

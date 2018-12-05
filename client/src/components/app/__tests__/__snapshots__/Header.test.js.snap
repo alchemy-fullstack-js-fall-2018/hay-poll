@@ -3,8 +3,11 @@
 exports[`<Header /> renders 1`] = `
 <styled.header>
   <h1>
-    Redux Blogging
+    Hay Poll
   </h1>
+  <h6>
+    Get it... Hay...
+  </h6>
   <styled.nav>
     <Input
       key="About"
@@ -15,21 +18,6 @@ exports[`<Header /> renders 1`] = `
       key="Home"
       label="Home"
       path="/home"
-    />
-    <Input
-      key="Posts"
-      label="Posts"
-      path="/posts/search"
-    />
-    <Input
-      key="Users"
-      label="Users"
-      path="/users"
-    />
-    <Input
-      key="Register"
-      label="Register"
-      path="/users/new"
     />
   </styled.nav>
 </styled.header>

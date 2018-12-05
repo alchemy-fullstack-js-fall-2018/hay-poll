@@ -1,11 +1,11 @@
-import store from '../store';
-import { updateSessionToken } from '../actions/session';
+import store from '../state/store';
+import { updateSessionToken } from '../state/actions/session';
 
-let token = window.localStorage.getItem('token');
+// let token = window.localStorage.getItem('token');
 
-store.subscribe(() => {
-  token = window.localStorage.getItem('token');
-});
+// store.subscribe(() => {
+//   token = window.localStorage.getItem('token');
+// });
 
 const setToken = token => {
   store.dispatch(updateSessionToken(token));

@@ -49,7 +49,7 @@ const App = () => {
       <BrowserRouter>
         <Fragment>
           <Helmet>
-            <title>Redux Blogging</title>
+            <title>Hay Poll</title>
             <link rel="icon" href="/src/assets/favicon.ico"/>
           </Helmet>
           <GlobalStyle/>
@@ -57,11 +57,6 @@ const App = () => {
           <Switch>
             <Route exact component={ROUTES.ABOUT.Component} path={ROUTES.ABOUT.path} />
             <Route exact component={ROUTES.HOME.Component} path={ROUTES.HOME.path} />
-            <Route exact component={ROUTES.POSTS.Component} path={ROUTES.POSTS.path} />
-            <Route exact component={ROUTES.POST_DETAIL.Component} path={ROUTES.POST_DETAIL.path} />
-            <Route exact component={ROUTES.USER_REGISTER.Component} path={ROUTES.USER_REGISTER.path} />
-            <Route exact component={ROUTES.USERS.Component} path={ROUTES.USERS.path} />
-            <Route exact component={ROUTES.USER_DETAIL.Component} path={ROUTES.USER_DETAIL.path} />
             <Redirect to={ROUTES.HOME.path} />
           </Switch>
           <Footer />
