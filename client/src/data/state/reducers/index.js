@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import userReducer from './users';
-import postReducer from './posts';
-import commentReducer from './comments';
+import pollsReducer from './polls';
+import resultsReducer from './results';
+import sessionReducer from './session';
 
 export default combineReducers({
-  users: userReducer,
-  posts: postReducer,
-  comments: commentReducer
+  polls: pollsReducer,
+  results: resultsReducer,
+  session: sessionReducer
 });

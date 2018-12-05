@@ -1,4 +1,4 @@
-import { getPolls, getPoll, getResults, postPoll, postVote } from '../pollApi';
+import { getPolls, getPoll, getResults, postPoll, postVote } from '../polls';
 import mockGetPolls from '../../../testing/fixtures/getPolls.json';
 import mockGetPoll from '../../../testing/fixtures/getPoll.json';
 import mockPostVote from '../../../testing/fixtures/postVote.json';
