@@ -22,17 +22,22 @@ let polls = Array.apply(null, { length: 10 }).map(() => {
   };
 });
 
-beforeEach(() => {
+beforeAll(() => {
   return mongoose.connection.dropCollection('polls').catch(() => {});
 });
 
+beforeAll(() => {
+  return mongoose.connection.dropCollection('votes').catch(() => {});
+});
+
 let createdPolls;
-beforeEach(() => {
+beforeAll(() => {
   return Promise.all(polls.map(createPoll))
     .then(pollRes => createdPolls = pollRes);
 });
 
 describe('polls', () => {
+
   it('creates a poll on post', () => {
     const poll = { title: 'What do you want for dessert', options: [{ choice: 'icecream' }, { choice: 'pie' }, { choice: 'cake' }] };
     return request(app)
@@ -66,7 +71,7 @@ describe('polls', () => {
       })
       .then(([poll1Created, poll2Created, res]) => {
         const polls = res.body;
-        expect(polls).toHaveLength(12);
+        expect(polls).toHaveLength(13);
         expect(polls).toContainEqual(poll1Created);
         expect(polls).toContainEqual(poll2Created);
       });
@@ -90,7 +95,6 @@ describe('polls', () => {
       .post(`/api/polls/${createdPolls[0]._id}/votes`)
       .send(vote)
       .then(res => {
-        console.log('did you make it to the test', res.body);
         expect(res.body).toEqual({
           ...vote,
           _id: expect.any(String),
@@ -98,4 +102,14 @@ describe('polls', () => {
         });
       });
   });
+
+  it('returns the results for votes', () => {
+    return request(app)
+      .get(`/api/polls/${createdPolls[0]._id}/results`)
+      .then(res => {
+        // console.table(res.body);
+        expect(res.body).toEqual([{ _id: expect.any(String), count: 1 }]);
+      });
+  });
 });
+

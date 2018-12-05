@@ -31,5 +31,15 @@ export default Router()
       .then(vote => res.json(vote))
       .catch(next);
 
+  })
+
+  .get('/polls/:id/results', (req, res, next) => {
+    const { id } = req.params;
+    Poll.findById(id)
+      .then(poll => {
+        return poll.results();
+      })
+      .then(results => res.json(results))
+      .catch(next);
   });
 
