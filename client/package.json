@@ -1,17 +1,25 @@
 {
-  "name": "client",
+  "name": "redux-blog",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "webpack.config.js",
   "scripts": {
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --hot --mode development"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acrankin/redux-blog.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acrankin/redux-blog/issues"
+  },
+  "homepage": "https://github.com/acrankin/redux-blog#readme",
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -23,10 +31,10 @@
     }
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.5",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-decorators": "^7.1.6",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
@@ -46,7 +54,6 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
-    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.1.0",
     "postcss-simple-vars": "^5.0.1",
@@ -62,6 +69,7 @@
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "uuid": "^3.3.2"
   }
 }
