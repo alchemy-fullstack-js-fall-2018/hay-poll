@@ -1,12 +1,24 @@
 import React from 'react';
 import Home from '../components/home/Home';
+import PollDetailContainer from '../container/PollDetailContainer';
 import { Link, Route } from 'react-router-dom';
+import CreatePollContainer from '../components/polls/CreatePoll';
 
 export const ROUTES = {
   HOME: {
     path: '/',
     Component: Home,
     linkTo: () => '/'
+  },
+  POLL: {
+    path: '/poll/:id',
+    Component: PollDetailContainer,
+    linkTo: id => `/poll/${id}`
+  },
+  CREATE_POLL: {
+    path: '/poll',
+    Component: CreatePollContainer,
+    linkTo: () => '/poll'
   }
 };
 

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Poll component renders a Poll component 1`] = `
+<div>
+  <h1>
+    Best Show of All Time
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <ul>
+      <label>
+        GOT
+      </label>
+      <input
+        onChange={[Function]}
+        type="radio"
+        value="GOT"
+      />
+      <label>
+        Seinfeld
+      </label>
+      <input
+        onChange={[Function]}
+        type="radio"
+        value="Seinfeld"
+      />
+      <label>
+        The Simpsons
+      </label>
+      <input
+        onChange={[Function]}
+        type="radio"
+        value="The Simpsons"
+      />
+    </ul>
+    <button>
+      Vote!
+    </button>
+  </form>
+</div>
+`;
