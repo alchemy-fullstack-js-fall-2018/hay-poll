@@ -15,7 +15,11 @@
     "start:watch": "nodemon server/index.js --exec babel-node"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/client/",
+      "<rootDir>/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
