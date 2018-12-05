@@ -66,5 +66,20 @@ describe('polls api', () => {
         _id: expect.any(String)
       }));
   });
+
+  it('posts a vote to a poll', () => {
+    const vote = {
+      pollId: '5c0719532ebe9164b28884b1',
+      votes: '5c0719532ebe9164b28884b3'
+    };
+
+    return postVote(vote)
+      .then(vote => expect(vote).toEqual({
+        _id: expect.any(String),
+        pollId: expect.any(String),
+        votes: expect.any(String),
+        __v: expect.any(Number)
+      }));
+  });
 });
 
