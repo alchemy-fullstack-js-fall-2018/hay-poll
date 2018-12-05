@@ -28,9 +28,7 @@ export default Router()
 
   .post('/:poll/votes', (req, res, next) => {
     const { poll } = req.params;
-    console.log('poll poll', poll)
     const { option, user } = req.body;
-    console.log('req', req.body)
 
     Vote.create({ poll, option, user })
       .then(vote => res.json(vote))

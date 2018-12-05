@@ -1,7 +1,14 @@
 import './helpers/db';
 import request from 'supertest';
 import app from './app';
-const { getPolls, pollsSeedData } = require('./helpers/testData');
+const {
+  getPolls,
+  pollsSeedData,
+  getUsers,
+  usersSeedData,
+  getVotes,
+  votesSeedData
+} = require('./helpers/testData');
 
 describe('polls routes', () => {
   it('creates a new poll', () => {
@@ -13,8 +20,8 @@ describe('polls routes', () => {
       _id: expect.any(String),
       __v: 0,
       options: [
-      { ...polls[0].options[0], _id: expect.any(String) },
-      { ...polls[0].options[1], _id: expect.any(String) }
+        { ...polls[0].options[0], _id: expect.any(String) },
+        { ...polls[0].options[1], _id: expect.any(String) }
       ]
     });
   });
@@ -40,6 +47,32 @@ describe('polls routes', () => {
         expect(res.body).toEqual({ ...createdPolls[1] });
       });
   });
+});
 
+describe('users routes', () => {
+  it('creates a new user', () => {
+    const createdUsers = getUsers();
+    const users = usersSeedData();
 
+    expect(createdUsers[0]).toEqual({
+      _id: expect.any(String),
+      email: users[0].email,
+      passwordHash: expect.any(String)
+    });
+  });
+});
+
+describe('votes routes', () => {
+  it('creates a new vote', () => {
+    const createdVotes = getVotes();
+    const votes = votesSeedData();
+
+    expect(createdVotes[0]).toEqual({
+      _id: expect.any(String),
+      __v: expect.any(Number),
+      option: votes[0].option,
+      poll: votes[0].poll,
+      user: votes[0].user
+    });
+  });
 });
