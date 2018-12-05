@@ -1,0 +1,10 @@
+root {
+  $primary: blue;
+  $secondary: red;
+
+  $text-light: white;
+  $text-dark: black;
+
+  $background-light: white;
+  $background-dark: black;
+}

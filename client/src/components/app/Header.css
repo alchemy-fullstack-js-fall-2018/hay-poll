@@ -1,0 +1,12 @@
+@import "../../css/variables.css";
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  a {
+    padding: 1em;
+    background-color: $primary;
+    color: $text-light;
+    text-decoration: none;
+  }
+}
