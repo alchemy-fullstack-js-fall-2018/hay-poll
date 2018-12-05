@@ -1,25 +1,13 @@
-import { get } from '../lib/request';
+import { get, post } from '../lib/request';
 
-const API_URL = '/api/polls';
+const POLLS_API = '/api/polls';
 
-export const getPolls = () => {
-  return get(`${API_URL}`)
-    .then(polls => ([...polls]));
-};
+export const getPolls = () =>  get(`${POLLS_API}`);
 
-export const getPoll = id => {
-  return get(`${API_URL}/${id}`)
-    .then(poll => poll);
-};
+export const getPoll = id => get(`${POLLS_API}/${id}`);
 
-export const getResults = () => {
+export const getResults = id => get(`${POLLS_API}/${id}/results`);
 
-};
+export const postPoll = poll => post(`${POLLS_API}`, poll);
 
-export const postPoll = () => {
-
-};
-
-export const postVote = () => {
-
-};
+export const postVote = (id, vote) => post(`${POLLS_API}/${id}/votes`, vote);
