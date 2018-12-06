@@ -6,7 +6,7 @@ const chance = require('chance').Chance();
 import { mockPoll, mockPolls, postPoll } from '../../../lib/fixtures/poll';
 import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../lib/fixtures/vote';
 
-describe('polls routes', () => {
+describe('votes routes', () => {
 
   let createdUser;
   let createdToken;
@@ -30,48 +30,7 @@ describe('polls routes', () => {
   });
   afterAll(async () => await disconnect());
 
-  test('post to /api/polls', async () => {
-
-    const poll = mockPoll();
-
-    await request(app)
-      .post('/api/polls')
-      .set('Authorization', `Bearer ${createdToken}`)
-      .send(poll)
-      .then(res => {
-        checkCode(200)(res);
-        expect(res.body).toEqual({
-          ...poll,
-          _id: expect.any(String),
-          __v: expect.any(Number),
-          choices: poll.choices.map(choice => ({ ...choice, _id: expect.any(String) }))
-        })
-      });
-  });
-
-  test('get to /api/polls', async () => {
-
-    const polls = mockPolls(10);
-    polls.forEach(poll => postPoll(poll, createdToken));
-
-    await request(app)
-      .get('/api/polls')
-      .then(res => {
-        checkCode(200)(res);
-        polls.forEach(poll => {
-          expect(res.body).toContainEqual({
-            ...poll,
-            _id: expect.any(String),
-            __v: expect.any(Number),
-            choices: poll.choices.map(choice => {
-              return { ...choice, _id: expect.any(String) };
-            })
-          });
-        });
-      });
-  });
-
-  test('get to /api/polls/:id', async () => {
+  test('post to /api/polls/:id/votes', async () => {
 
     const poll = mockPoll();
     let createdPoll;
@@ -82,12 +41,50 @@ describe('polls routes', () => {
       .send(poll)
       .then(({ body }) => createdPoll = body);
 
+    const vote = {
+      poll: createdPoll._id,
+      selection: createdPoll.choices[chance.natural({ min: 0, max: 3 })]._id
+    }
+
     await request(app)
-      .get(`/api/polls/${createdPoll._id}`)
+      .post(`/api/polls/${createdPoll._id}/votes`)
+      .set('Authorization', `Bearer ${createdToken}`)
+      .send(vote)
       .then(res => {
         checkCode(200)(res);
-        expect(res.body).toEqual(createdPoll)
-    });
+        expect(res.body).toEqual({
+          ...vote,
+          _id: expect.any(String),
+          __v: expect.any(Number)
+        })
+      });
+  });
+
+  test('get to /api/polls/:id/results', async () => {
+
+    const poll = mockPoll();
+    let createdPoll;
+
+    await request(app)
+      .post('/api/polls')
+      .set('Authorization', `Bearer ${createdToken}`)
+      .send(poll)
+      .then(({ body }) => createdPoll = body);
+
+    const quantities = randomVoteQuantities(poll.choices.length)
+    const voteArrays = randomVoteArrays(quantities, createdPoll);
+    await runVotes(createdPoll, voteArrays, createdToken);
+
+    await request(app)
+      .get(`/api/polls/${createdPoll._id}/results`)
+      .then(({ body }) => {
+        quantities.forEach(quantity => {
+          expect(body).toContainEqual({
+            _id: expect.any(String),
+            count: quantity
+          })
+        })
+      })
   });
 
 });
