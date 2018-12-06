@@ -1,4 +1,4 @@
-const polls = [
+export const polls = [
   {
     title: 'poll one',
     candidates: [

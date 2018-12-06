@@ -42,7 +42,7 @@ describe('polls reducer', () => {
     expect(newState).toEqual(state);
   });
 
-  it('accepts FETCH_POLLS actions', () => {
+  it.skip('accepts FETCH_POLLS actions', () => {
     const action = { type: FETCH_POLLS, payload: getPolls() };
     const newState = reducer(state, action);
 
