@@ -5,7 +5,7 @@ import { ROUTES } from '../../routes/routes';
 export default function Poll({ _id, title }) {
   return (
     <>
-      <p><Link to={ROUTES.POLL.linkTo(_id)}></Link>{title}</p>
+      <p><Link to={ROUTES.POLL.linkTo(_id)}>{title}</Link></p>
     </>
   );
 }
