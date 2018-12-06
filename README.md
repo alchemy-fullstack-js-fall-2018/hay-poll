@@ -8,15 +8,15 @@ A mock of [strawpoll](https://www.strawpoll.me/).
 
 * front end:
   * a file at /client/src/services/`<resource name>`
-  * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors`
+  * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors` files
   * a folder at /client/src/components/resources/`<resource name>` with any necessary view components inside
   * `OPTIONAL:` a file in /client/src/testing/fixtures with useful data/functions for writing tests
 * back end:
-  * a folder in /server/resources with `model` and `routes`
+  * a folder in /server/resources with `model` and `routes` files
   * `OPTIONAL:` a file in /server/testing/fixtures with useful data/functions for writing tests
   * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
   * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
-  * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in `/server/lib` and `/server/services`
+  * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in /server/lib and /server/services
 
 ##### Notes
 
