@@ -1,4 +1,6 @@
-# Notes
+# Hay Poll
+
+A mock of [strawpoll](https://www.strawpoll.me/).
 
 ## Process
 
