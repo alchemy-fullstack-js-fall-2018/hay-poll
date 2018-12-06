@@ -1,7 +1,7 @@
 import store from '../state/store';
 import { updateSessionToken } from '../state/actions/session';
 
-// let token = window.localStorage.getItem('token');
+let token = window.localStorage.getItem('token');
 
 // store.subscribe(() => {
 //   token = window.localStorage.getItem('token');
@@ -33,8 +33,8 @@ export const post = (url, body) => {
   })
     .then(res => {
       const headerToken = res.headers.get('X-AUTH-TOKEN');
-      if (headerToken !== token) setToken(headerToken);
-      if (token) {
+      if(headerToken !== token) setToken(headerToken);
+      if(token) {
         window.localStorage.setItem('token', token);
       }
       return res.json();

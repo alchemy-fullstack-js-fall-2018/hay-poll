@@ -13,13 +13,12 @@ describe('polls route', () => {
   let createdToken;
 
   beforeEach(async () => {
-
     await request(app)
-      .post('/api/auth/signup')
-      .send({
-        email: 'jack',
-        password: 'abcdef'
-      })
+      .post('/api/users/signup')
+      .send({ email: 'jack@test.com', password: 'abcdef' })
+    await request(app)
+      .post('/api/users/login')
+      .send({ email: 'jack@test.com', password: 'abcdef' })
       .then(res => {
         createdUser = res.body;
         createdToken = res.header['x-auth-token'];
@@ -30,9 +29,7 @@ describe('polls route', () => {
     await dropCollection('polls');
     await dropCollection('votes');
   });
-  afterAll(async () => {
-    await disconnect()
-  });
+  afterAll(async () => await disconnect());
 
   test('post to /api/polls', async () => {
 

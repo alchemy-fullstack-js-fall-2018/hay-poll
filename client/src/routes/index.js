@@ -1,5 +1,5 @@
-import About from '../components/presentational/about/About.jsx';
-import Home from '../components/presentational/home/Home.jsx';
+import About from '../components/pages/about/About.jsx';
+import Home from '../components/pages/home/Home.jsx';
 
 export const ROUTES = {
   ABOUT: {
