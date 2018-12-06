@@ -7,14 +7,15 @@ const userSchema = new Schema({
     required: true
   },
   passwordHash: String
-  },
-  {
-    toJSON: {
-      transform: function (doc, ret) {
-        delete ret.__v;
-        delete ret.passwordHash;
-      }
+},
+{
+  toJSON: {
+    transform: function (doc, ret) {
+      delete ret.passwordHash;
+      delete ret.__v;
+      return ret;
     }
+  }
 });
 
 userSchema.virtual('password').set(function (password) {
@@ -26,21 +27,16 @@ userSchema.pre('save', function (next) {
   next();
 });
 
-userSchema.methods.compare = function (clearPassword) {
-  return compare(clearPassword, this.passwordHash);
+userSchema.methods.compare = function (password) {
+  return compare(password, this.passwordHash);
 };
 
 userSchema.methods.authToken = function () {
-  return tokenize(this.toJSON());
+  return tokenize(this);
 };
 
 userSchema.statics.findByToken = function (token) {
-  try {
-    return Promise.resolve(untokenize(token));
-  } catch (e) {
-    console.log(e);
-    return Promise.resolve(null);
-  }
-};
+  return Promise.resolve(untokenize(token));
+}
 
 export default model('User', userSchema);

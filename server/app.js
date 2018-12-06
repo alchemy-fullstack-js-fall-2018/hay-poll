@@ -5,7 +5,7 @@ import apiRoutes from './routes/api';
 
 import cors from './middleware/cors';
 import spa from './middleware/spa';
-import error from './middleware/error';
+import { errorHandler } from './middleware/error';
 
 
 const app = express();
@@ -24,7 +24,7 @@ app.use('/api', apiRoutes);
 
 app.use('*', spa('/client/dist/index.html'));
 
-app.use(error);
+app.use(errorHandler);
 
 
 export default app;
