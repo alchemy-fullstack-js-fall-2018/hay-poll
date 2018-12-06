@@ -8,7 +8,6 @@ const initialState = {
 export default function reducer(state = initialState, { type, payload }) {
   switch(type) {
     case FETCH_POLLS:
-      console.log('fetching some polls');
       return { ...state, list: [...payload] };
     case FETCH_POLLS_LOADING:
       return { ...state, loading: true };
