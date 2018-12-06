@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
-import { ROUTES } from '../app/App.jsx';
+import { ROUTES } from '../../../routes';
 import PropTypes from 'prop-types';
 
 export class AuthForm extends PureComponent {

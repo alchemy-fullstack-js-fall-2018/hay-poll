@@ -54,7 +54,7 @@ More details coming soon. The following is a prior process with Heroku:
   * a file at /client/src/services/`<resource name>`
   * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors` files
   * a folder at /client/src/components/resources/`<resource name>` with any necessary view components inside
-  * edit `App.jsx` to update `ROUTES` and the `Switch` component
+  * update `ROUTES` in /client/routes/index.js with any new routes
   * `OPTIONAL:` a file in /client/src/testing/fixtures with useful data/functions for writing tests
 
 ##### Notes

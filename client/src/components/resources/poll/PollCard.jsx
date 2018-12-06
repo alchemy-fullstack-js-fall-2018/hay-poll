@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../app/App.jsx';
+import { ROUTES } from '../../../routes';
 
 export default function Poll({ _id, title }) {
   return (

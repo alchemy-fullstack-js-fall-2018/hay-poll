@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { ROUTES } from '../../app/App.jsx';
+import { ROUTES } from '../../../routes';
 import { postPoll } from '../../../services/polls';
 
 @withRouter
