@@ -1,10 +1,48 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { ROUTES } from '../../routes';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+
+import About from '../resources/about/About.jsx';
+import Home from '../resources/home/Home.jsx';
+// import PollList from '../resources/poll/PollList.jsx';
+// import { Session } from '../lib/Session.jsx';
+
+export const ROUTES = {
+  ABOUT: {
+    path: '/about/',
+    Component: About,
+    linkTo: () => '/about'
+  },
+  HOME: {
+    path: '/home/',
+    Component: Home,
+    linkTo: () => '/home',
+  },
+  //   POLLS: {
+  //     path: '/polls',
+  //     Component: Session(PollList),
+  //     linkTo: () => '/polls'
+  //   },
+  //   CREATE_POLL: {
+  //     path: '/polls/create',
+  //     Component: PollCreate,
+  //     linkTo: () => '/polls/create'
+  //   },
+  //   POLL: {
+  //     path: '/polls/:id',
+  //     Component: PollDetails,
+  //     linkTo: id => `/polls/${id}`
+  //   },
+  //   AUTH: {
+  //     path: '/auth',
+  //     Component: Auth,
+  //     linkTo: () => '/auth'
+  //   }
+};
+
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -48,19 +86,25 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Fragment>
+
           <Helmet>
             <title>Hay Poll</title>
             <link rel="icon" href="/src/assets/favicon.ico"/>
             <link rel="manifest" href="/src/assets/manifest.json"/>
           </Helmet>
+
           <GlobalStyle/>
-          <Header />
+
+          <Header/>
+
           <Switch>
             <Route exact component={ROUTES.ABOUT.Component} path={ROUTES.ABOUT.path} />
             <Route exact component={ROUTES.HOME.Component} path={ROUTES.HOME.path} />
             <Redirect to={ROUTES.HOME.path} />
           </Switch>
-          <Footer />
+
+          <Footer/>
+
         </Fragment>
       </BrowserRouter>
     </ThemeProvider>
