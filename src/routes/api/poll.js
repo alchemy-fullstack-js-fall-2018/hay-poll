@@ -17,6 +17,13 @@ export default Router()
       .then(polls => res.json(polls));
   })
 
+  .delete('/polls/:id', (req, res) => {
+    const { id } = req.params;
+
+    Poll.findByIdAndRemove(id)
+      .then(poll => res.json(poll));
+  })
+
   .get('/polls/:id', (req, res) => {
     const { id } = req.params;
 
