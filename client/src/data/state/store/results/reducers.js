@@ -1,5 +1,5 @@
-import { FETCH_RESULTS, FETCH_RESULTS_DONE } from '../actions/results';
-import { FETCH_POLLS_LOADING } from '../actions/polls';
+import { FETCH_RESULTS, FETCH_RESULTS_DONE } from './actions';
+import { FETCH_POLLS_LOADING } from '../polls/actions';
 
 const initialState = {
   loading: false,

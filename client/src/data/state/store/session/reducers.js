@@ -3,7 +3,7 @@ import {
   SESSION_LOADING,
   SESSION_LOADED,
   SESSION_ERROR
-} from '../actions/session';
+} from './actions';
 
 const initialState = {
   user: null,

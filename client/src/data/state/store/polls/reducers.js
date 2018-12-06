@@ -5,7 +5,7 @@ import {
   FETCH_POLL_LOADING,
   FETCH_POLL_DONE,
   FETCH_POLL
-} from '../actions/polls';
+} from './actions';
 
 const initialState = {
   loading: false,

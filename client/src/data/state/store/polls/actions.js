@@ -1,4 +1,4 @@
-import { getPolls, getPoll } from '../../services/polls';
+import { getPolls, getPoll } from '../../../services/polls';
 
 export const FETCH_POLLS = 'FETCH_POLLS';
 export const FETCH_POLLS_LOADING = 'FETCH_POLLS_START';

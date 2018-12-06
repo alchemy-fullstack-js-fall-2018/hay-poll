@@ -5,7 +5,7 @@ import mockPostVote from '../../../testing/fixtures/postVote.json';
 import mockPostPoll from '../../../testing/fixtures/postPoll.json';
 import mockGetResults from '../../../testing/fixtures/getResults.json';
 
-jest.mock('../../lib/request.js', () => ({
+jest.mock('../../lib/requests.js', () => ({
   get: url => {
     if(url.startsWith('/api/polls/') && url.endsWith('results')) return Promise.resolve(mockGetResults);
     if(url.startsWith('/api/polls/')) return Promise.resolve(mockGetPoll);

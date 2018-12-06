@@ -1,4 +1,4 @@
-import { get, post } from '../lib/request';
+import { get, post } from '../lib/requests';
 
 const POLLS_API = '/api/polls';
 

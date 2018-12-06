@@ -1,8 +1,4 @@
-import {
-  signup as signupService,
-  login as loginService,
-  verifySession
-} from '../../services/auth';
+import { signupRequest, loginRequest, verifyRequest } from '../../../services/auth';
 
 export const SESSION_CREATE = 'SESSION_CREATE';
 export const SESSION_LOADING = 'SESSION_LOADING';
@@ -11,13 +7,13 @@ export const SESSION_ERROR = 'SESSION_ERROR';
 
 export const signup = ({ email, password }) => ({
   type: SESSION_CREATE,
-  payload: signupService({ email, password })
+  payload: signupRequest({ email, password })
 });
 
 
 export const login = ({ email, password }) => ({
   type: SESSION_CREATE,
-  payload: loginService({ email, password })
+  payload: loginRequest({ email, password })
 });
 
 export const refreshSession = () => ({
@@ -25,7 +21,7 @@ export const refreshSession = () => ({
   loadStart: SESSION_LOADING,
   loadEnd: SESSION_LOADED,
   errorType: SESSION_ERROR,
-  payload: verifySession()
+  payload: verifyRequest()
 });
 
 export const SESSION_TOKEN = 'SESSION_TOKEN';
