@@ -1,6 +1,6 @@
 import app from './app';
 import { config } from 'dotenv';
-import { connect } from './utils/connect';
+import { connect } from './lib/connect';
 
 config();
 connect();

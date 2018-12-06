@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import Poll from '../../models/Poll';
-import Vote from '../../models/Vote';
-import requireAuth from '../../middleware/requireAuth';
+import Poll from '../models/Poll';
+import Vote from '../models/Vote';
+import requireAuth from '../middleware/requireAuth';
 
 export default Router()
   .post('/polls', requireAuth, (req, res, next) => {

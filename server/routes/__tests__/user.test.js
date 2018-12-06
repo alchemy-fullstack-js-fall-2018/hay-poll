@@ -1,8 +1,8 @@
-import app from '../../../app';
+import app from '../../app';
 import request from 'supertest';
-import { connect, disconnect } from '../../../utils/connect'
-import { dropCollection } from '../../../utils/db';
-import { tokenize } from '../../../utils/auth';
+import { connect, disconnect } from '../../lib/connect'
+import { dropCollection } from '../../lib/db';
+import { tokenize } from '../../lib/auth';
 
 
 

@@ -1,11 +1,11 @@
-import { checkStatus } from '../../../utils/helpers';
-import { connect, disconnect } from '../../../utils/connect'
-import { dropCollection } from '../../../utils/db';
+import { checkStatus } from '../../lib/helpers';
+import { connect, disconnect } from '../../lib/connect'
+import { dropCollection } from '../../lib/db';
 import request from 'supertest';
-import app from '../../../app';
+import app from '../../app';
 const chance = require('chance').Chance();
-import { mockPoll, mockPolls, postPoll } from '../../../utils/fixtures/poll';
-import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../utils/fixtures/vote';
+import { mockPoll, mockPolls, postPoll } from '../../lib/fixtures/poll';
+import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../lib/fixtures/vote';
 
 describe('polls route', () => {
 

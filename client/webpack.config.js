@@ -1,11 +1,9 @@
 /* eslint-env node */
-//const CleanPlugin = require('clean-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // start here
   entry: './src/index.js',
-  // put the build output here (not dev server)
   output: {
     filename: 'bundle.[hash].js',
     publicPath: '/'
@@ -18,13 +16,11 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    // add plugins
-    //new CleanPlugin('./dist/bundle.*.js'),
-    new HtmlPlugin({ template: './src/index.html' }),
+    new CleanPlugin('./dist/bundle.*.js'),
+    new HtmlPlugin({ template: './src/index.html' })
   ],
   module: {
     rules: [
-      // js
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -35,8 +31,6 @@ module.exports = {
           }
         }
       },
-
-      // css
       {
         test: /\.css$/,
         use: [
@@ -65,8 +59,6 @@ module.exports = {
           }
         ]
       },
-
-      // images
       {
         test: /\.(jpg|png|svg)$/,
         use: {

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { compare, tokenize, hash, untokenize } from '../utils/auth';
+import { compare, tokenize, hash, untokenize } from '../lib/auth';
 
 const userSchema = new Schema({
   email: {
