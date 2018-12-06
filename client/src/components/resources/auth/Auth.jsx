@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { ROUTES } from '../../../routes';
 import PropTypes from 'prop-types';
 
-export class AuthForm extends PureComponent {
+export default class AuthForm extends PureComponent {
   static propTypes = {
     typeText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,

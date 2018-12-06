@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -21,13 +21,13 @@ const Input = ({ onChange, resource, name }) => {
   const label = name.slice(0, 1).toUpperCase() + name.slice(1);
 
   return (
-    <Fragment>
+    <>
       <StyledLabel htmlFor={name}>{label}</StyledLabel>
       <StyledInput
         name={name} type="text"
         value={resource} onChange={onChange}
       ></StyledInput>
-    </Fragment>
+    </>
   );
 };
 

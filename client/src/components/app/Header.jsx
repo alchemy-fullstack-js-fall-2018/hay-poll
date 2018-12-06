@@ -23,6 +23,7 @@ const Header = () => {
   const links = [
     { label: 'About', path: '/about' },
     { label: 'Home', path: '/home' },
+    { label: 'Polls', path: '/polls' },
   ];
   const LinkComponents = links.map(link => {
     return <LinkButton key={link.label} path={link.path} label={link.label}/>;

@@ -34,16 +34,38 @@ exports[`<App /> renders 1`] = `
       <Route
         component={[Function]}
         exact={true}
+        key="0"
         path="/about/"
       />
       <Route
         component={[Function]}
         exact={true}
+        key="1"
         path="/home/"
       />
-      <Redirect
-        push={false}
-        to="/home/"
+      <Route
+        component={[Function]}
+        exact={true}
+        key="2"
+        path="/polls"
+      />
+      <Route
+        component={[Function]}
+        exact={false}
+        key="3"
+        path="/polls/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        key="4"
+        path="/signup"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        key="5"
+        path="/login"
       />
     </Switch>
     <Footer />

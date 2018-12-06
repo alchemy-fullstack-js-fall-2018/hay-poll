@@ -2,8 +2,10 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import About from '../components/resources/about/About.jsx';
 import Home from '../components/resources/home/Home.jsx';
-// import PollList from '../resources/poll/PollList.jsx';
-// import { Session } from '../lib/Session.jsx';
+import PollList from '../components/resources/poll/PollList.jsx';
+import PollDetail from '../components/resources/poll/PollDetail.jsx';
+import { Session } from '../components/lib/Session.jsx';
+import Auth from '../components/resources/auth/Auth.jsx';
 
 export const ROUTES = {
   ABOUT: {
@@ -16,26 +18,37 @@ export const ROUTES = {
     Component: Home,
     linkTo: () => '/home',
   },
-  //   POLLS: {
-  //     path: '/polls',
-  //     Component: Session(PollList),
-  //     linkTo: () => '/polls'
-  //   },
+  POLLS: {
+    path: '/polls',
+    Component: PollList,
+    // Component: Session(PollList),
+    linkTo: () => '/polls'
+  },
+  POLL: {
+    path: '/polls/:id',
+    Component: PollDetail,
+    linkTo: id => `/polls/${id}`
+  },
   //   CREATE_POLL: {
   //     path: '/polls/create',
   //     Component: PollCreate,
   //     linkTo: () => '/polls/create'
-  //   },
-  //   POLL: {
-  //     path: '/polls/:id',
-  //     Component: PollDetails,
-  //     linkTo: id => `/polls/${id}`
   //   },
   //   AUTH: {
   //     path: '/auth',
   //     Component: Auth,
   //     linkTo: () => '/auth'
   //   }
+  SIGNUP: {
+    path: '/signup',
+    Component: Auth,
+    linkTo: () => '/signup'
+  },
+  LOGIN: {
+    path: '/login',
+    Component: Auth,
+    linkTo: () => '/login'
+  }
 };
 
 export const rootLinks = () => {

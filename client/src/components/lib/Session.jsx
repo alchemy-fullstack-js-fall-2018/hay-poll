@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { ROUTES } from '../../routes';
-import { getSession, getSessionLoading } from '../../selectors/session';
-import { refreshSession } from '../../actions/session';
+import { getSession, getSessionLoading } from '../../store/resources/sessions/selectors';
+import { refreshSession } from '../../store/resources/sessions/actions';
 
 export const Session = Component => {
 

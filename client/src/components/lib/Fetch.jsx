@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 export const Fetch = (Component, options = {}) => {
-  return class WithFetch extends PureComponent {
+  return class Fetch extends PureComponent {
     static propTypes = {
       fetch: PropTypes.func.isRequired
     };
@@ -12,6 +12,7 @@ export const Fetch = (Component, options = {}) => {
     };
 
     componentDidMount() {
+      console.log(this.props);
       const promise = this.props.fetch();
       if(!promise || typeof promise.then !== 'function') return;
 

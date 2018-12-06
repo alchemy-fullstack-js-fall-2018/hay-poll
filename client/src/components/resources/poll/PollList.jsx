@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { getPolls } from '../../selectors/polls';
-import { List } from '../../components/List';
-import PollCard from './PollCard';
-import { fetchPolls } from '../../actions/polls';
-import { Fetch } from '../../components/Fetch';
+import { getPolls } from '../../../store/resources/polls/selectors';
+import { List } from '../../styles/List.jsx';
+import PollCard from './PollCard.jsx';
+import { fetchPolls } from '../../../store/resources/polls/actions';
+import { Fetch } from '../../lib/Fetch.jsx';
 
 const mapStateToProps = state => ({
   list: getPolls(state)

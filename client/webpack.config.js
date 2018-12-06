@@ -13,7 +13,13 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     port: 8080,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:7890',
+        secure: false
+      }
+    }
   },
   plugins: [
     new CleanPlugin('./dist/bundle.*.js'),

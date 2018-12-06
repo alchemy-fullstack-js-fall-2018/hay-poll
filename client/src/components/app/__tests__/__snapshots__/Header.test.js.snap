@@ -19,6 +19,11 @@ exports[`<Header /> renders 1`] = `
       label="Home"
       path="/home"
     />
+    <LinkButton
+      key="Polls"
+      label="Polls"
+      path="/polls"
+    />
   </styled.nav>
 </styled.header>
 `;

@@ -2,9 +2,9 @@ import { get, post } from './requests';
 
 const POLLS_API = '/api/polls';
 
-export const getPolls = () =>  get(`${POLLS_API}`);
-
 export const getPoll = id => get(`${POLLS_API}/${id}`);
+
+export const getPolls = () =>  get(`${POLLS_API}`);
 
 export const getResults = id => get(`${POLLS_API}/${id}/results`);
 

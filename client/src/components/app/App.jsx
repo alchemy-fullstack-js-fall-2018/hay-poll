@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import { routerRoutes } from '../../routes';
+import { ROUTES, routerRoutes } from '../../routes';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -42,12 +42,15 @@ const theme = {
   accent: 'rgb(173, 38, 36)'
 };
 
+// Add redirect to routes?
+// <Redirect to={ROUTES.HOME.path} />
+
 const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Fragment>
+        <>
           <Helmet>
             <title>Hay Poll</title>
             <link rel="icon" href="/src/assets/favicon.ico"/>
@@ -59,7 +62,7 @@ const App = () => {
             {routerRoutes()}
           </Switch>
           <Footer/>
-        </Fragment>
+        </>
       </BrowserRouter>
     </ThemeProvider>
   );

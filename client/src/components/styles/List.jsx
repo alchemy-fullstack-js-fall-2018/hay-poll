@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const withList = (Component, options = {}) => {
+export const List = (Component, options = {}) => {
   return function List(props) {
     const { idKey, spread, dataKey = 'item' } = options;
     const { list } = props;
@@ -10,9 +10,7 @@ export const withList = (Component, options = {}) => {
 
     const componentsList = list.map((item, i) => {
       let componentProps = { itemProps, [dataKey]: item };
-      if(spread) {
-        componentProps = { ...itemProps, ...item };
-      }
+      if(spread) componentProps = { ...itemProps, ...item };
       return <Component key={item[idKey] || i} {...componentProps} />;
     });
 
