@@ -44,6 +44,7 @@ More details coming soon. The following is a prior process with Heroku:
 ##### Full slices
 
 * back end:
+  * any tests are placed in __tests__ for the folder of the file that you are testing (this keeps directories clean)
   * a folder in /server/resources with `model` and `routes` files
   * edit /server/resources/index.js to include `<resources name>`
   * `OPTIONAL:` a file in /server/testing/fixtures with useful data/functions for writing tests
@@ -51,6 +52,7 @@ More details coming soon. The following is a prior process with Heroku:
   * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
   * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in /server/lib and /server/services
 * front end:
+  * any tests are placed in __tests__ for the folder of the file that you are testing (this keeps directories clean)
   * a file at /client/src/services/`<resource name>`
   * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors` files
   * a folder at /client/src/components/resources/`<resource name>` with any necessary view components inside
