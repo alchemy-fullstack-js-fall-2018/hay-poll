@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import { middleware } from '../middleware';
-import pollsReducer from './polls/reducers';
-import resultsReducer from './results/reducers';
-import sessionReducer from './session/reducers';
+import { middleware } from './middleware';
+import pollsReducer from './resources/polls/reducers';
+import resultsReducer from './resources/results/reducers';
+import sessionReducer from './resources/session/reducers';
 
 const reducer = combineReducers({
   polls: pollsReducer,
