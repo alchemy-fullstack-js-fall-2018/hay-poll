@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllPolls component renders a component 1`] = `
+<div>
+  <ul>
+    <li
+      key="0"
+    >
+      What is your favorite TV Show?
+    </li>
+  </ul>
+</div>
+`;

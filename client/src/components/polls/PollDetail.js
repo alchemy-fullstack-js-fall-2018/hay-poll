@@ -12,10 +12,19 @@ export default class PollDetail extends PureComponent {
     buttonType: 'radio'
   };
 
+  componentDidMount() {
+    const { fetchPoll } = this.props;
+    const id = this.props.match.params.id;
+    fetchPoll(id);
+  }
+
   handleSubmit = event => {
     const { choices } = this.state;
+    const vote = { vote: choices };
+    const id = this.props.match.params.id;
     event.preventDefault();
-    this.props.submitVote(this.props.match.params.id, choices);
+    this.props.submitVote(id, vote);
+    this.props.history.push('/');
   };
 
   handleInputChange = ({ target }) => {
@@ -24,16 +33,14 @@ export default class PollDetail extends PureComponent {
   };
 
   render() {
-    const { poll } = this.props;
-    const { title, options } = poll;
-
-    const optionList = options.map((option, i) => {
+    const { issue, options } = this.props.poll;
+    const optionList = options && options.map((option, i) => {
       return (
         <Fragment key={i}>
-          <label>{option}</label>
+          <label>{option.choice}</label>
           <input
             type={this.state.buttonType}
-            value={option}
+            value={option.choice}
             onChange={this.handleInputChange}
           />
         </Fragment>
@@ -42,7 +49,7 @@ export default class PollDetail extends PureComponent {
 
     return (
       <div>
-        <h1>{title}</h1>
+        <h1>{issue}</h1>
         <form onSubmit={this.handleSubmit}>
           <ul>{optionList}</ul>
           <button>Vote!</button>

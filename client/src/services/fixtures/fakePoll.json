@@ -1,0 +1,19 @@
+{
+  "_id" : "5c0861b0e1c9a14e25baedc0",
+  "issue" : "Favorite TV Show",
+  "options" : [
+      {
+          "_id" : "5c0861b0e1c9a14e25baedc3",
+          "choice" : "GOT"
+      },
+      {
+          "_id" : "5c0861b0e1c9a14e25baedc2",
+          "choice" : "Sopranos"
+      },
+      {
+          "_id" : "5c0861b0e1c9a14e25baedc1",
+          "choice" : "Halt and Catch Fire"
+      }
+  ],
+  "__v" : 0
+}

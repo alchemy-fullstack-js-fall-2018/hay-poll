@@ -6,12 +6,29 @@ exports[`CreatePoll component renders a component 1`] = `
     Create Poll!
   </h1>
   <label>
+    Add Issue
+  </label>
+  <input
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label>
     Add Option
   </label>
   <input
     onChange={[Function]}
     type="text"
     value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Add Option
+  </button>
+  <PollPreview
+    issue=""
+    options={Array []}
   />
 </div>
 `;

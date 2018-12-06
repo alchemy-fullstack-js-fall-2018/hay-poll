@@ -3,6 +3,11 @@ export const getPolls = () => {
     .then(res => res.json());
 };
 
+export const getPoll = id => {
+  return fetch(`/api/polls/${id}`)
+    .then(res => res.json());
+};
+
 export const postVote = (id, vote) => {
   return fetch(`/api/polls/${id}/votes`, {
     method: 'POST',

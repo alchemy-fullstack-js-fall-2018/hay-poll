@@ -7,7 +7,7 @@ export default class CreatePoll extends PureComponent {
   };
 
   state = {
-    question: '',
+    issue: '',
     option: '',
     options: []
   };
@@ -16,8 +16,8 @@ export default class CreatePoll extends PureComponent {
     this.setState({ option: target.value });
   };
 
-  updateQuestion = ({ target }) => {
-    this.setState({ question: target.value });
+  updateIssue = ({ target }) => {
+    this.setState({ issue: target.value });
   };
 
   updateOptionsArray = () => {
@@ -26,7 +26,7 @@ export default class CreatePoll extends PureComponent {
   };
 
   handleSubmit = event => {
-    const { question, options } = this.state;
+    const { issue, options } = this.state;
     const { createPoll } = this.props;
     event.preventDefault();
 
@@ -34,22 +34,22 @@ export default class CreatePoll extends PureComponent {
       return ({ choice: option });
     });
 
-    createPoll({ issue: question, options: formattedOptions });
+    createPoll({ issue: issue, options: formattedOptions });
   };
 
   render() {
-    const { question, option, options } = this.state;
+    const { issue, option, options } = this.state;
     return (
       <div>
         <h1>Create Poll!</h1>
 
-        <label>Add Question</label>
-        <input type="text" value={question} onChange={this.updateQuestion} />
+        <label>Add Issue</label>
+        <input type="text" value={issue} onChange={this.updateIssue} />
 
         <label>Add Option</label>
         <input type="text" value={option} onChange={this.updateOption} />
         <button onClick={this.updateOptionsArray}>Add Option</button>
-        <PollPreview question={question} options={options} />
+        <PollPreview issue={issue} options={options} />
         {options.length > 1 && <button onClick={this.handleSubmit}>Create Poll</button>}
       </div>
     );

@@ -31,11 +31,12 @@ export default Router()
 
   .post('/:id/votes', (req, res, next) => {
     const { id } = req.params;
-    const { votes } = req.body;
+    const { vote } = req.body;
+    console.log('VVVVV', req.body);
 
     Poll.findById(id)
       .then(poll => {
-        const choices = poll.options.filter(element => votes.includes(element.choice));
+        const choices = poll.options.filter(element => vote.includes(element.choice));
         return {
           pollId: poll._id,
           votes: choices.map(choice => ({

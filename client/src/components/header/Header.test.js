@@ -6,5 +6,5 @@ describe('Header component', () => {
   it('renders a header component', () => {
     const wrapper = shallow(<Header />);
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

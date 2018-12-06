@@ -14,6 +14,13 @@ exports[`Header component renders a header component 1`] = `
     >
       home
     </Link>
+    <Link
+      key="1"
+      replace={false}
+      to="/poll"
+    >
+      create poll
+    </Link>
   </nav>
 </div>
 `;
