@@ -3,12 +3,12 @@ import { HttpError } from './error';
 
 export default (req, res, next) => {
   const authHeader = req.get('Authorization');
-  if (!authHeader) {
+  if(!authHeader) {
     return next(new HttpError({ code: 401, message: 'Missing token' }))
   }
 
   const token = authHeader.replace(/bearer /i, '');
-  if (!token) {
+  if(!token) {
     return next(new HttpError({ code: 401, message: 'Invalid blank token' }))
   }
 

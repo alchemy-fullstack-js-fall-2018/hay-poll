@@ -25,8 +25,8 @@ class PollDetails extends PureComponent {
   }
 
   componentDidUpdate(oldProps) {
-    if (oldProps !== this.props) {
-      if (this.props.poll) this.setState({ voteOrder: this.props.poll.candidates });
+    if(oldProps !== this.props) {
+      if(this.props.poll) this.setState({ voteOrder: this.props.poll.candidates });
     }
   }
 
@@ -50,7 +50,7 @@ class PollDetails extends PureComponent {
 
   render() {
     const { poll, results } = this.props;
-    if (!poll) return null;
+    if(!poll) return null;
 
     const resultsComponent = results
       .sort((a, b) => a.avgVote - b.avgVote)

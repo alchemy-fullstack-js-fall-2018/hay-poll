@@ -36,6 +36,6 @@ export const dropCollection = name => {
     connect(MONGODB_URI);
     return mongoose.connection.dropCollection(name)
         .catch(err => {
-            if (err.codeName !== 'NamespaceNotFound') throw err;
+            if(err.codeName !== 'NamespaceNotFound') throw err;
         });
 };
