@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { ROUTES } from '../../app/App.jsx';
-import { postPoll } from '../../services/polls';
+import { postPoll } from '../../../services/polls';
 
 @withRouter
 export default class PollCreate extends PureComponent {

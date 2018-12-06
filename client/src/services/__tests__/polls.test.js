@@ -1,9 +1,9 @@
 import { getPolls, getPoll, getResults, postPoll, postVote } from '../polls';
-import mockGetPolls from '../../fixtures/getPolls.json';
-import mockGetPoll from '../../fixtures/getPoll.json';
-import mockPostVote from '../../fixtures/postVote.json';
-import mockPostPoll from '../../fixtures/postPoll.json';
-import mockGetResults from '../../fixtures/getResults.json';
+import mockGetPolls from '../../testing/fixtures/getPolls.json';
+import mockGetPoll from '../../testing/fixtures/getPoll.json';
+import mockPostVote from '../../testing/fixtures/postVote.json';
+import mockPostPoll from '../../testing/fixtures/postPoll.json';
+import mockGetResults from '../../testing/fixtures/getResults.json';
 
 jest.mock('../requests.js', () => ({
   get: url => {

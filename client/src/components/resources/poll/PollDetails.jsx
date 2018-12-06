@@ -7,7 +7,7 @@ import { withFetch } from '../../components/withFetch';
 import { getPoll } from '../../selectors/polls';
 import { getResults } from '../../selectors/results';
 import { fetchResults } from '../../actions/results';
-import { postVotes } from '../../services/polls';
+import { postVotes } from '../../../services/polls';
 
 class PollDetails extends PureComponent {
   static propTypes = {

@@ -1,5 +1,5 @@
 import User from '../model';
-import { getErrors } from '../../../lib/errors';
+import { getErrors } from '../../../testing/lib/errors';
 
 describe('user model', () => {
 

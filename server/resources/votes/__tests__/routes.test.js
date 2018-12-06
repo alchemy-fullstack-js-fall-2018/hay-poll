@@ -1,10 +1,10 @@
-import { checkCode } from '../../../lib/errors';
+import { checkCode } from '../../../testing/lib/errors';
 import { connect, disconnect, dropCollection } from '../../../lib/db';
 import request from 'supertest';
 import app from '../../../app';
 const chance = require('chance').Chance();
-import { mockPoll, mockPolls, postPoll } from '../../../lib/fixtures/poll';
-import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../lib/fixtures/vote';
+import { mockPoll, mockPolls, postPoll } from '../../../testing/fixtures/poll';
+import { randomVoteQuantities, randomVoteArrays, runVotes } from '../../../testing/fixtures/vote';
 
 describe('votes routes', () => {
 

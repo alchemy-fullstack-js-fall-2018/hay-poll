@@ -1,4 +1,4 @@
-import { signupRequest, loginRequest, verifyRequest } from '../../services/auth';
+import { signupRequest, loginRequest, verifyRequest } from '../../../services/auth';
 
 export const SESSION_CREATE = 'SESSION_CREATE';
 export const SESSION_LOADING = 'SESSION_LOADING';

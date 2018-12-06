@@ -1,6 +1,6 @@
 import Poll from '../model';
-import { getErrors } from '../../../lib/errors';
-import { mockPoll } from '../../../lib/fixtures/poll';
+import { getErrors } from '../../../testing/lib/errors';
+import { mockPoll } from '../../../testing/fixtures/poll';
 const chance = require('chance').Chance();
 
 describe('poll model', () => {

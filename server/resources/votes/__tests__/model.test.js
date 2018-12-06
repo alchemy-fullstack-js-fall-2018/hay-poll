@@ -1,6 +1,6 @@
 import Vote from '../model';
-import { getErrors } from '../../../lib/errors';
-import { mockVote } from '../../../lib/fixtures/vote';
+import { getErrors } from '../../../testing/lib/errors';
+import { mockVote } from '../../../testing/fixtures/vote';
 
 describe('vote model', () => {
 
