@@ -12,7 +12,7 @@ const createPoll = poll => {
     .then(res => res.body);
 };
 
-let idPollToDelete = '';
+let createdPoll = null;
 
 const poll1 = {
   title: 'Best Doughnut in Portland',
@@ -33,7 +33,7 @@ describe('poll routes', () => {
       .post('/api/polls')
       .send(poll1)
       .then(res => {
-        idPollToDelete = res.body._id;
+        createdPoll = res.body;
         expect(res.body).toEqual({
           ...poll1,
           _id: expect.any(String),
@@ -46,9 +46,20 @@ describe('poll routes', () => {
       });
   });
 
+  it('gets a poll by id', () => {
+    return request(app)
+      .get(`/api/polls/${createdPoll._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          ...createdPoll,
+          __v: 0
+        });
+      });
+  });
+
   it('deletes a poll', () => {
     return request(app)
-      .delete(`/api/polls/${idPollToDelete}`)
+      .delete(`/api/polls/${createdPoll._id}`)
       .then(res => {
         expect(res.body).toEqual({ removed: true });
       });

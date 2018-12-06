@@ -17,4 +17,11 @@ const pollSchema = new Schema({
   }
 });
 
+// pollSchema.options.toJSON = {
+//   transform: function(doc, ret) {
+//     delete ret.__v;
+//     return ret;
+//   }
+// };
+
 export default model('Poll', pollSchema);
