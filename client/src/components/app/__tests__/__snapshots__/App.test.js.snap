@@ -23,6 +23,10 @@ exports[`<App /> renders 1`] = `
         href="/src/assets/favicon.ico"
         rel="icon"
       />
+      <link
+        href="/src/assets/manifest.json"
+        rel="manifest"
+      />
     </HelmetWrapper>
     <GlobalStyleComponent />
     <Header />

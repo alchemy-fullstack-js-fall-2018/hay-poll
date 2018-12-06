@@ -51,6 +51,7 @@ const App = () => {
           <Helmet>
             <title>Hay Poll</title>
             <link rel="icon" href="/src/assets/favicon.ico"/>
+            <link rel="manifest" href="/src/assets/manifest.json"/>
           </Helmet>
           <GlobalStyle/>
           <Header />
