@@ -4,32 +4,36 @@ import Poll from '../../models/Poll';
 //import requireAuth from '../../middleware/requireAuth';
 
 export default Router()
-  .post('/polls', (req, res) => {
+  .post('/polls', (req, res, next) => {
     const { title, candidates } = req.body;
     Poll.create({ title, candidates })
-      .then(poll => res.json(poll));
+      .then(poll => res.json(poll))
+      .catch(next);
   })
 
-  .get('/polls', (req, res) => {
+  .get('/polls', (req, res, next) => {
     Poll.find()
       .select({ __v: false })
       .lean()
-      .then(polls => res.json(polls));
+      .then(polls => res.json(polls))
+      .catch(next);
   })
 
-  .delete('/polls/:id', (req, res) => {
+  .delete('/polls/:id', (req, res, next) => {
     const { id } = req.params;
 
-    Poll.findByIdAndRemove(id)
-      .then(poll => res.json(poll));
+    Poll.findByIdAndDelete(id)
+      .then(poll => res.json({ removed: !!poll }))
+      .catch(next);
   })
 
-  .get('/polls/:id', (req, res) => {
+  .get('/polls/:id', (req, res, next) => {
     const { id } = req.params;
 
     Poll.findById(id)
       .lean()
-      .then(poll => res.json(poll));
+      .then(poll => res.json(poll))
+      .catch(next);
   });
 
 // .post('/polls/:id/votes', requireAuth, (req, res) => {

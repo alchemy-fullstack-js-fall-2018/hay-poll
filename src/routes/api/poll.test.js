@@ -12,6 +12,8 @@ const createPoll = poll => {
     .then(res => res.body);
 };
 
+let idPollToDelete = '';
+
 const poll1 = {
   title: 'Best Doughnut in Portland',
   candidates: [{ name: 'Nola' }, { name: 'Blue Star' }, { name: 'Coco' }]
@@ -31,6 +33,7 @@ describe('poll routes', () => {
       .post('/api/polls')
       .send(poll1)
       .then(res => {
+        idPollToDelete = res.body._id;
         expect(res.body).toEqual({
           ...poll1,
           _id: expect.any(String),
@@ -40,6 +43,14 @@ describe('poll routes', () => {
             { ...poll1.candidates[2], _id: expect.any(String) }
           ]
         });
+      });
+  });
+
+  it('deletes a poll', () => {
+    return request(app)
+      .delete(`/api/polls/${idPollToDelete}`)
+      .then(res => {
+        expect(res.body).toEqual({ removed: true });
       });
   });
 
