@@ -1,38 +1,49 @@
-# Hay Poll
+# Notes
 
-Create a clone of [strawpoll](https://www.strawpoll.me/)
+## Process
 
-## Routes
+##### Full slices
 
-* `POST /api/polls` create a new poll
-* `GET /api/polls` get a list of polls
-* `GET /api/polls/:id` get a poll by id
-* `POST /api/polls/:id/votes` vote for a candidate
-  * Note: check that the candidate exists
-* `GET /api/polls/:id/results` get the results of a poll
-* `POST /api/auth/signup` signup a user
-* `POST /api/auth/login` login a user
-* `GET /api/auth/verify` verify a user by token
+* front end:
+  * a file at /client/services/`<resource name>`
+  * a folder in /client/store/resources with `actions`, `reducers`, and `selectors`
+  * a folder at /client/components/resources/`<resource name>` with any necessary view components inside
+  * `OPTIONAL:` a file in /client/testing/fixtures with useful data/functions for writing tests
+* back end:
+  * a folder in /server/resources with `model` and `routes`
+  * `OPTIONAL:` a file in /server/testing/fixtures with useful data/functions for writing tests
+  * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
+  * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
+  * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in `/server/lib` and `/server/services`
 
-## Requirements
+##### Notes
 
-* Must be logged in to vote
-* Must be logged in to create poll
-* Must be logged in to see poll results
-* Do NOT have to be logged in to see poll and polls list
+* react-router constants lie within `App.jsx`
+* using styled-components for CSS in JS
+  * add `vscode-styled-components` in VS Code to get syntax highlighting
+  * https://alligator.io/react/styled-components/
+  * https://www.styled-components.com/docs/basics#getting-started
+* using react-helmet to manage page-level stuff (in the head element) within App.jsx instead of importing at index.html
+  * https://github.com/nfl/react-helmet
+* using `.jsx` instead of `.js`, which is a very minor change but makes things more explicit (had to change only the test property in webpack for it to work, plus imports require the explicit `.jsx` if from a file, which kind of like)
+* when semantically useful, using the ES6 feature of implicitly importing index.js from any folder that is itself imported. In other words, `import App from 'components/App'` is equivalent to `import App from 'components/App/index.js'`
+  * https://alligator.io/react/index-js-public-interfaces/
 
-## Models
+##### VS Code folder icons
 
-* Poll
-* Vote
-* User
+Optionally, you can install `Material Icon Theme` and add the following to your VS Code settings to get colorful icons for just about everything:
 
-## BONUS
-
-* User can only vote once per poll
-
-## Tests
-
-* e2e back-end tests
-* unit test reducers, actions, selectors
-* Snapshot test components
+```
+    "material-icon-theme.folders.theme": "specific",
+    "material-icon-theme.activeIconPack": "react_redux",
+    "material-icon-theme.files.associations": {
+        "selectors.js": "Redux-store",
+        "model.js": "Database"
+    },
+    "material-icon-theme.folders.associations": {
+        "selectors": "Redux-store",
+        "state": "Resource",
+        "fixtures": "Helper",
+        "presentational": "Views"
+    },
+```
