@@ -9,12 +9,12 @@ exports[`<Header /> renders 1`] = `
     Get it... Hay...
   </h6>
   <styled.nav>
-    <Input
+    <LinkButton
       key="About"
       label="About"
       path="/about"
     />
-    <Input
+    <LinkButton
       key="Home"
       label="Home"
       path="/home"

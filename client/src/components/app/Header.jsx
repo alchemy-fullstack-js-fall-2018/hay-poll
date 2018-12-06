@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinkButton from '../lib/LinkButton.jsx';
+import LinkButton from '../styles/LinkButton.jsx';
 
 const StyledHeader = styled.header`
   background-color: ${ ({ theme }) => theme.primary };

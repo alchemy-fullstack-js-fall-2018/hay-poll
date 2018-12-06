@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../resources/users/model';
 import { HttpError } from './error';
 
 export default (req, res, next) => {
