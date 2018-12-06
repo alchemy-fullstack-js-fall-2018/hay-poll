@@ -15,6 +15,11 @@ export const ROUTES = {
     Component: PollsContainer,
     linkTo: () => '/polls'
   },
+  POLL: {
+    path: '/polls/:id',
+    Component:  <h1> POLL </h1>,
+    linkTo: id => `/polls/${id}`
+  }
   // SIGNUP: {
   //   path: '/signup',
   //   Component: Signup,
