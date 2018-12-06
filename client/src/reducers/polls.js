@@ -1,6 +1,5 @@
 import {
   FETCH_POLLS,
-  SUBMIT_VOTE,
   CREATE_POLL,
   LOAD_POLL_START,
   LOAD_POLL_END,
@@ -25,8 +24,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return { ...state, allPolls: payload };
     case FETCH_POLL:
       return { ...state, currentPoll: payload };
-    case SUBMIT_VOTE:
-      return payload;
     default:
       return state;
   }

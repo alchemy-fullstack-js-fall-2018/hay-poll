@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import polls from './polls';
+import pollsReducer from './polls';
+import resultsReducer from './results';
 
 export default combineReducers({
-  polls
+  results: resultsReducer,
+  polls: pollsReducer
 });

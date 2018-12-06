@@ -24,7 +24,7 @@ export default class PollDetail extends PureComponent {
     const id = this.props.match.params.id;
     event.preventDefault();
     this.props.submitVote(id, vote);
-    this.props.history.push('/');
+    this.props.history.push(`/poll/${id}/results`);
   };
 
   handleInputChange = ({ target }) => {

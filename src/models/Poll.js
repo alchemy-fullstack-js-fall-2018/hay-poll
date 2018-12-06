@@ -23,7 +23,7 @@ pollSchema.methods.results = function() {
             totalVotes: { $sum: 1 }
         }
     }
-])
+  ])
 }
 
 export default mongoose.model('Poll', pollSchema)

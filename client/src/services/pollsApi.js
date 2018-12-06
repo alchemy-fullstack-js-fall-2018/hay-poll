@@ -24,3 +24,8 @@ export const postPoll = poll => {
   })
     .then(res => res.json());
 };
+
+export const getResults = id => {
+  return fetch(`/api/polls/${id}/results`)
+    .then(res => res.json());
+};

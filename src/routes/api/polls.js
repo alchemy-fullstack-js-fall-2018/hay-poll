@@ -32,7 +32,6 @@ export default Router()
   .post('/:id/votes', (req, res, next) => {
     const { id } = req.params;
     const { vote } = req.body;
-    console.log('VVVVV', req.body);
 
     Poll.findById(id)
       .then(poll => {

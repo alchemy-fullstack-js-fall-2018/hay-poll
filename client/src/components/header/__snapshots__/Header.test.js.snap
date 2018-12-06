@@ -17,6 +17,13 @@ exports[`Header component renders a header component 1`] = `
     <Link
       key="1"
       replace={false}
+      to="/mypolls"
+    >
+      all polls
+    </Link>
+    <Link
+      key="2"
+      replace={false}
       to="/poll"
     >
       create poll

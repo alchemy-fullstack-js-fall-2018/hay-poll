@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PollPreview from './PollPreview';
-// import { createPoll } from '../../actions/polls';
+import { Redirect } from 'react-router-dom';
 
 export default class CreatePoll extends PureComponent {
   static propTypes = {
@@ -33,12 +33,15 @@ export default class CreatePoll extends PureComponent {
     const formattedOptions = options.map(option => {
       return ({ choice: option });
     });
-
     createPoll({ issue: issue, options: formattedOptions });
   };
 
   render() {
+    const { poll } = this.props;
     const { issue, option, options } = this.state;
+    
+    if(poll._id) return <Redirect to={`/poll/${poll._id}`} />;
+
     return (
       <div>
         <h1>Create Poll!</h1>
@@ -49,6 +52,7 @@ export default class CreatePoll extends PureComponent {
         <label>Add Option</label>
         <input type="text" value={option} onChange={this.updateOption} />
         <button onClick={this.updateOptionsArray}>Add Option</button>
+
         <PollPreview issue={issue} options={options} />
         {options.length > 1 && <button onClick={this.handleSubmit}>Create Poll</button>}
       </div>
