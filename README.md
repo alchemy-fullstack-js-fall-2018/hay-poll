@@ -12,9 +12,9 @@ Table of contents
    * [Project setup](#Project-setup)
    * [Deployment](#Deployment)
    * [Development Process](#Development-Process)
-    * [Full slices](#Full-slices)
-    * [Notes](#Notes)
-    * [VS Code folder icons](#VS-Code-folder-icons)
+      * [Full slices](#Full-slices)
+      * [Notes](#Notes)
+      * [VS Code folder icons](#VS-Code-folder-icons)
    * [TODO](#TODO)
 <!--te-->
 
