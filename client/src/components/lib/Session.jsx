@@ -6,7 +6,7 @@ import { ROUTES } from '../../routes';
 import { getSession, getSessionLoading } from '../../selectors/session';
 import { refreshSession } from '../../actions/session';
 
-export const withSession = Component => {
+export const Session = Component => {
 
   class WithSessionComponent extends PureComponent {
     static propTypes = {

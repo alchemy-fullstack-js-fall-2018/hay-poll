@@ -1,35 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CommentCard from './CommentCard.jsx';
-import styled from 'styled-components';
 
-const StyledDiv = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-`;
+export const withList = (Component, options = {}) => {
+  return function List(props) {
+    const { idKey, spread, dataKey = 'item' } = options;
+    const { list } = props;
 
-const List = ({ items, Card }) => {
+    const itemProps = { ...props };
+    delete itemProps[list];
 
-  const cardList = items.map(comment => {
-    return (
-      <Card
-        key={comment.id}
-        comment={items}
-      />
-    );
-  });
+    const componentsList = list.map((item, i) => {
+      let componentProps = { itemProps, [dataKey]: item };
+      if(spread) {
+        componentProps = { ...itemProps, ...item };
+      }
+      return <Component key={item[idKey] || i} {...componentProps} />;
+    });
 
-  return (
-    <div>
-      <StyledDiv>
-        {cardList}
-      </StyledDiv>
-    </div>
-  );
+    return <div>{componentsList}</div>;
+  };
 };
-
-List.propTypes = {
-  items: PropTypes.array.isRequired
-};
-
-export default List;
