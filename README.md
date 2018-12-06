@@ -2,16 +2,19 @@
 
 A mock of [strawpoll](https://www.strawpoll.me/).
 
-## Process
+## Project setup
+
+* Run `npm install` in `/` and `/client` to get going.
+* Run `npm run test:watch` in both of these places to get tests running (in watch mode too)
+
+## Deployment
+
+More details coming soon.
+
+## Development Process
 
 ##### Full slices
 
-* front end:
-  * a file at /client/src/services/`<resource name>`
-  * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors` files
-  * a folder at /client/src/components/resources/`<resource name>` with any necessary view components inside
-  * edit `App.jsx` to update `ROUTES` and the `Switch` component
-  * `OPTIONAL:` a file in /client/src/testing/fixtures with useful data/functions for writing tests
 * back end:
   * a folder in /server/resources with `model` and `routes` files
   * edit /server/resources/index.js to include `<resources name>`
@@ -19,6 +22,12 @@ A mock of [strawpoll](https://www.strawpoll.me/).
   * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
   * `OPTIONAL:` a file in /server/testing/scripts with useful data/functions for initial DB data
   * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in /server/lib and /server/services
+* front end:
+  * a file at /client/src/services/`<resource name>`
+  * a folder in /client/src/store/resources with `actions`, `reducers`, and `selectors` files
+  * a folder at /client/src/components/resources/`<resource name>` with any necessary view components inside
+  * edit `App.jsx` to update `ROUTES` and the `Switch` component
+  * `OPTIONAL:` a file in /client/src/testing/fixtures with useful data/functions for writing tests
 
 ##### Notes
 
