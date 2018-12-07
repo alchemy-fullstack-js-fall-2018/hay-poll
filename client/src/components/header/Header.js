@@ -11,6 +11,7 @@ export default function Header() {
       <div>
         <Link to={ROUTES.HOME.linkTo('/home')}>Home</Link>
         <Link to={ROUTES.POLLS.linkTo('/polls')}>Polls</Link>
+        <Link to={ROUTES.CREATE_POLL.linkTo('/polls/create')}>Create Poll</Link>
       </div>
     </header>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
 import Polls from './containers/polls/Polls';
+import CreatePoll from './containers/polls/CreatePoll';
 
 export const ROUTES = {
   HOME: {
@@ -14,6 +15,11 @@ export const ROUTES = {
     Component: Polls,
     linkTo: () => '/polls'
   },
+  CREATE_POLL: {
+    path: '/polls/create',
+    Component: CreatePoll,
+    linkTo: () => '/polls/create'
+  }
 
 };
 
