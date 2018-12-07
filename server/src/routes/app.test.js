@@ -5,7 +5,7 @@ import request from 'supertest';
 import app from './app';
 
 config();
-connect();
+connect(process.env.MONGODB_URI);
 
 const seedPolls = [
   {
