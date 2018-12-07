@@ -5,7 +5,7 @@ import request from 'supertest';
 import app from './app';
 
 config();
-connect('mongodb://localhost:27017/poll_test');
+connect();
 
 const seedPolls = [
   {
