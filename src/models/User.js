@@ -29,7 +29,7 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.methods.compare = function(password) {
-  return compare(password, this.passwordHash);;
+  return compare(password, this.passwordHash);
 };
 
 userSchema.methods.authToken = function() {
