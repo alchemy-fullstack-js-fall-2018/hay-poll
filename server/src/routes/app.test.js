@@ -143,7 +143,7 @@ describe('app routes', () => {
       .post('/api/users/login')
       .send({ email: 'test@test.com', password: '1234567' })
       .then(res => {
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(500);
       });
   });
 
