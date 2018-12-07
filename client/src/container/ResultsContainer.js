@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import Results from '../components/results/Results';
 import { fetchResults } from '../actions/results';
-import { fetchPoll } from '../actions/polls';
+// import { fetchPoll } from '../actions/polls';
 import { getResults } from '../selectors/results';
-import { getPoll } from '../selectors/polls';
+// import { getPoll } from '../selectors/polls';
 
 const mapStateToProps = state => ({
   results: getResults(state),

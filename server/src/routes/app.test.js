@@ -100,7 +100,6 @@ describe('poll routes', () => {
       pollId: createdPolls[0]._id,
       votes: [createdPolls[0].options[0].choice]
     }
-
     return request(app)
       .post(`/api/polls/${createdPolls[0]._id}/votes`)
       .send(vote)

@@ -3,7 +3,7 @@ import Poll from '../../models/Poll';
 import Vote from '../../models/Vote';
 
 export default Router()
-  .post('/', (req, res, next) => {
+  .post('/polls', (req, res, next) => {
 
     const { issue, options } = req.body;
 
@@ -13,7 +13,7 @@ export default Router()
       .catch(next)
   })
 
-  .get('/', (req, res, next) => {
+  .get('/polls', (req, res, next) => {
     Poll
       .find()
       .lean()
@@ -21,7 +21,7 @@ export default Router()
       .catch(next)
   })
 
-  .get('/:id', (req, res, next) => {
+  .get('/polls/:id', (req, res, next) => {
     const { id } = req.params;
 
     Poll.findById(id)
@@ -29,13 +29,13 @@ export default Router()
       .catch(next)
   })
 
-  .post('/:id/votes', (req, res, next) => {
+  .post('/polls/:id/votes', (req, res, next) => {
     const { id } = req.params;
-    const { vote } = req.body;
+    const { votes } = req.body;
 
     Poll.findById(id)
       .then(poll => {
-        const choices = poll.options.filter(element => vote.includes(element.choice));
+        const choices = poll.options.filter(element => votes.includes(element.choice));
         return {
           pollId: poll._id,
           votes: choices.map(choice => ({
@@ -56,7 +56,7 @@ export default Router()
       .catch(next)
   })
 
-  .get('/:id/results', (req, res, next) => {
+  .get('/polls/:id/results', (req, res, next) => {
     const { id } = req.params;
     Poll.findById(id)
       .then(poll => poll.results())

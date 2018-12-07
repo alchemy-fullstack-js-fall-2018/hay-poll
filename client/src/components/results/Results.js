@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { fetchPoll } from '../../actions/polls';
+// import { fetchPoll } from '../../actions/polls';
 
 export default class Results extends PureComponent {
 
