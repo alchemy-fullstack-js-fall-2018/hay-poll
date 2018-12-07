@@ -23,6 +23,6 @@ export default Router()
       .catch(next);
   })
 
-  .get('/users/verify', requireAuth, (req, res, next) => {
+  .get('/users/verify', requireAuth, (req, res) => {
     res.json(req.user);
   });

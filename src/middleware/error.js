@@ -1,4 +1,4 @@
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res) => {
   let status = 500;
   let message = 'Server error';
 
