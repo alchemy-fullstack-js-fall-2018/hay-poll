@@ -12,7 +12,7 @@ const createPoll = poll => {
     .then(res => res.body);
 };
 
-let createdPoll = null;
+let createdPoll1 = null;
 
 const poll1 = {
   title: 'Best Doughnut in Portland',
@@ -28,12 +28,16 @@ describe('poll routes', () => {
     return mongoose.connection.dropCollection('polls').catch(() => {});
   });
 
+  afterAll(() => {
+    return mongoose.disconnect();
+  });
+
   it('creates a poll', () => {
     return request(app)
       .post('/api/polls')
       .send(poll1)
       .then(res => {
-        createdPoll = res.body;
+        createdPoll1 = res.body;
         expect(res.body).toEqual({
           ...poll1,
           _id: expect.any(String),
@@ -48,10 +52,10 @@ describe('poll routes', () => {
 
   it('gets a poll by id', () => {
     return request(app)
-      .get(`/api/polls/${createdPoll._id}`)
+      .get(`/api/polls/${createdPoll1._id}`)
       .then(res => {
         expect(res.body).toEqual({
-          ...createdPoll,
+          ...createdPoll1,
           __v: 0
         });
       });
@@ -59,7 +63,7 @@ describe('poll routes', () => {
 
   it('deletes a poll', () => {
     return request(app)
-      .delete(`/api/polls/${createdPoll._id}`)
+      .delete(`/api/polls/${createdPoll1._id}`)
       .then(res => {
         expect(res.body).toEqual({ removed: true });
       });
@@ -67,18 +71,19 @@ describe('poll routes', () => {
 
   it('can get a list of all polls', () => {
     return Promise.all([createPoll(poll1), createPoll(poll2)])
-      .then(([poll1Created, poll2Created]) => {
+      .then(([createdPoll1, createdPoll2]) => {
         return Promise.all([
-          Promise.resolve(poll1Created),
-          Promise.resolve(poll2Created),
+          Promise.resolve(createdPoll1),
+          Promise.resolve(createdPoll2),
           request(app).get('/api/polls')
         ]);
       })
-      .then(([poll1Created, poll2Created, res]) => {
+      .then(([createdPoll1, createdPoll2, res]) => {
         const polls = res.body;
         expect(polls).toHaveLength(2);
-        expect(polls).toContainEqual(poll1Created);
-        expect(polls).toContainEqual(poll2Created);
+        expect(polls).toContainEqual(createdPoll1);
+        expect(polls).toContainEqual(createdPoll2);
       });
   });
+
 });
