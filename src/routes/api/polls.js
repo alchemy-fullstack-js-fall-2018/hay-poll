@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Poll from '../../models/Poll';
-//import Vote from '../../models/Vote';
+import Vote from '../../models/Vote';
 //import requireAuth from '../../middleware/requireAuth';
 
 export default Router()
@@ -36,7 +36,7 @@ export default Router()
       .catch(next);
   });
 
-// .post('/polls/:id/votes', requireAuth, (req, res) => {
+// .post('/polls/:id/votes', (req, res) => {
 //   const { id } = req.params;
 //   const votes = req.body;
 
@@ -60,7 +60,7 @@ export default Router()
 //   Vote.find({ pollId: id })
 //     .lean()
 //     .then(vote => res.json(vote));
-// })
+// });
 
 // .get('/polls/:id/results', (req, res) => {
 //   const { id } = req.params;

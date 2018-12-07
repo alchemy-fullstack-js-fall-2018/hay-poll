@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import poll from './poll';
+import polls from './polls';
+import auth from './auth';
 
 const resources = [
-  poll
+  auth,
+  polls
 ];
 
 export default Router().use('/', ...resources);
