@@ -6,6 +6,7 @@ export default function Header() {
   return (
     <header>
       <nav>
+        <Link to={ROUTES.POLLS.linkTo()}>Polls</Link>
         <Link to={ROUTES.HOME.linkTo()}>Home</Link>
       </nav>
     </header>

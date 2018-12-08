@@ -11,6 +11,8 @@ export default function App() {
         <Fragment>
           <Header />
           <Switch>
+            <Route path={ROUTES.POLL_DETAIL.path} component={ROUTES.POLL_DETAIL.component} />
+            <Route path={ROUTES.POLLS.path} component={ROUTES.POLLS.component} />
             <Route path={ROUTES.HOME.path} component={ROUTES.HOME.component} />
           </Switch>
         </Fragment>

@@ -17,7 +17,9 @@ module.exports = {
     port: 7899,
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:7891'
+      '/api': {
+        target: 'http://localhost:3000'
+      }
     }
   },
   plugins: [
