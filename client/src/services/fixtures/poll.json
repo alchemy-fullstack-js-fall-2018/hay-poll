@@ -1,0 +1,21 @@
+[
+  {
+    "_id" : "5c0729019ce98c6d4af5c534",
+    "title" : "niwatu",
+    "options" : [
+      {
+        "_id" : "5c0729019ce98c6d4af5c537",
+        "choice" : "uzeilepat"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c536",
+        "choice" : "pa"
+      },
+      {
+        "_id" : "5c0729019ce98c6d4af5c535",
+        "choice" : "bistukmuv"
+      }
+    ],
+    "__v" : 0
+  }
+]
