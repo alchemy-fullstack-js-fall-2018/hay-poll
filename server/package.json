@@ -6,11 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "preinstall": "cd client && npm i",
-    "build": "npm run build:server && npm run build:client",
-    "build:server": "babel src -d lib -s true",
-    "build:client": "cd client && npm run build",
-    "heroku-postbuild": "npm run build && rm -rf client/node_modules",
+    "build": "babel src -d lib -s true",
     "start": "node lib/index.js",
     "start:watch": "nodemon src/index.js --exec babel-node"
   },
