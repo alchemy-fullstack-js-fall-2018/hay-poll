@@ -12,7 +12,7 @@
     "build:client": "cd client && npm run build",
     "heroku-postbuild": "npm run build && rm -rf client/node_modules",
     "start": "node lib/index.js",
-    "start:watch": "nodemon src/lib/index.js --exec babel-node"
+    "start:watch": "nodemon src/index.js --exec babel-node"
   },
   "jest": {
     "testEnvironment": "node"

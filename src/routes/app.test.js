@@ -57,7 +57,6 @@ describe('users routes', () => {
     expect(createdUsers[0]).toEqual({
       _id: expect.any(String),
       email: users[0].email,
-      passwordHash: expect.any(String)
     });
   });
 });

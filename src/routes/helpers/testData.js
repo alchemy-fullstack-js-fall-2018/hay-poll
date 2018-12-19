@@ -1,7 +1,6 @@
 import { dropCollection } from './db';
 import request from 'supertest';
 import app from '../../routes/app';
-import { identity } from 'rxjs';
 
 beforeEach(() => {
   return dropCollection('polls');
