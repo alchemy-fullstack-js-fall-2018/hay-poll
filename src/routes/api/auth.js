@@ -4,7 +4,7 @@ import requireAuth from '../../middleware/requireAuth';
 import { HttpError } from '../../middleware/error';
 
 export default Router()
-  .post('/auth/signup', (req, res, next) => {
+  .post('/signup', (req, res, next) => {
     const { email, password } = req.body;
     User.create({ email, password })
       .then(user => {
@@ -14,7 +14,7 @@ export default Router()
       .catch(next);
   })
 
-  .post('/auth/login', (req, res, next) => {
+  .post('/login', (req, res, next) => {
     const { email, password } = req.body;
     User.findOne({ email })
       .then(user => {
@@ -26,6 +26,6 @@ export default Router()
       .catch(next);
   })
 
-  .get('/auth/verify', requireAuth, (req, res, next) => {
+  .get('/verify', requireAuth, (req, res, next) => {
     res.json(req.user);
   });

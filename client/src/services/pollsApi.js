@@ -1,9 +1,13 @@
+import { get, post } from './request';
+
 export const getPolls = () => {
-  return fetch('/api/polls')
-    .then(res => res.json());
+  return get('/api/polls');
 };
 
 export const getPoll = id => {
-  return fetch(`/api/polls/${id}`)
-    .then(res => res.json());
+  return get(`/api/polls/${id}`);
+};
+
+export const sendVote = (pollId, vote) => {
+  return post(`/api/polls/${pollId}/votes`, vote);
 };
