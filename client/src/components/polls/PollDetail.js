@@ -10,12 +10,13 @@ class PollDetail extends PureComponent {
   };
 
   componentDidMount() {
-    const { fetchPoll, poll } = this.props;
+    const { fetchPoll } = this.props;
     const id = this.props.match.params.id;
+    fetchPoll(id);
+  }
+
+  submitVote() {
     
-    if(!poll) {
-      fetchPoll(id);
-    }
   }
 
   render() {
@@ -27,15 +28,18 @@ class PollDetail extends PureComponent {
         <label key={option._id}>
           <h4>{option.option}</h4>
           <p>{option.description}</p>
-          <input type="checkbox" value={option.option} />
+          <input type="radio" name="poll" value={option.option} />
         </label>
       );
     });
 
     return (
       <Fragment>
-        <h3>{poll.title}</h3>
-        {optionsItems}
+        <form onSubmit={this.submitVote}>
+          <h3>{poll.title}</h3>
+          {optionsItems} <br />
+          <button>Submit Vote</button>
+        </form>
       </Fragment>
     );
   }

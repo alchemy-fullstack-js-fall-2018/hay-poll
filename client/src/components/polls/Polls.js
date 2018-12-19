@@ -5,7 +5,8 @@ import Poll from './Poll';
 export default class Polls extends PureComponent {
   static propTypes = {
     polls: PropTypes.array.isRequired,
-    fetchPolls: PropTypes.func.isRequired
+    fetchPolls: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -17,7 +18,7 @@ export default class Polls extends PureComponent {
     const { polls } = this.props;
     console.log('polls', polls);
     const pollsComponents = polls.map(poll => {
-      return <Poll key={poll.id} poll={poll} />;
+      return <Poll key={poll._id} poll={poll} />;
     });
 
     return <div>{pollsComponents}</div>;

@@ -1,17 +1,20 @@
-import { dropCollection } from './db';
+import './db';
 import request from 'supertest';
 import app from '../../routes/app';
+import Poll from '../../models/Poll';
+import User from '../../models/User';
+import Vote from '../../models/Vote';
 
 beforeEach(() => {
-  return dropCollection('polls');
+  return Poll.deleteMany({});
 });
 
 beforeEach(() => {
-  return dropCollection('users');
+  return User.deleteMany({});
 });
 
 beforeEach(() => {
-  return dropCollection('votes');
+  return Vote.deleteMany({});
 });
 
 let createdPolls;
